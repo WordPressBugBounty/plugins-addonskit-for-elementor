@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
  * Description: Complete Elementor Widgets for Directorist.
  * Author: wpWax
  * Author URI: https://wpwax.com
- * Version: 1.1.4
+ * Version: 1.1.5
  * Elementor tested up to: 3.23.4
  * License: GPL2
  * Tested up to: 6.6

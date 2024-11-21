@@ -61,10 +61,10 @@ trait DirectoryTypeStyles {
         $this->add_responsive_control(
             'directory_type_icon_gap',
             [
-                'label'      => __( 'Icon Padding', 'addonskit-for-elementor' ),
+                'label'      => __( 'Icon Margin', 'addonskit-for-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'selectors'  => [
-                    "{{WRAPPER}} {$selector} .directorist-icon-mask" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    "{{WRAPPER}} {$selector} .directorist-icon-mask" => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'separator'  => 'after',
             ]

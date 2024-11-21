@@ -455,8 +455,8 @@ class AllListings extends Widget_Base {
 		$settings = $this->get_settings();
 		$type     = empty( $settings['type'] ) ? [] : $settings['type'];
 		$tag      = empty( $settings['tag'] ) ? [] : $settings['tag'];
-		$cat      = empty( $settings['cat'] ) ? [] : $settings['tag'];
-		$location = empty( $settings['location'] ) ? [] : $settings['tag'];
+		$cat      = empty( $settings['cat'] ) ? [] : $settings['cat'];
+		$location = empty( $settings['location'] ) ? [] : $settings['location'];
 		$filter   = $settings['filter'] ?? 'no';
 		$filter   = $settings['sidebar'] === 'no_sidebar' ? $filter : 'no';
 
@@ -492,8 +492,9 @@ class AllListings extends Widget_Base {
 				$atts['default_directory_type'] = $settings['default_type'];
 			}
 		}
-		$atts = apply_filters( 'directorist_all_listings_elementor_widget_atts', $atts, $settings );
 
+		$atts = apply_filters( 'directorist_all_listings_elementor_widget_atts', $atts, $settings );
+		
 		Helper::run_shortcode( 'directorist_all_listing', $atts );
 	}
 }
