@@ -33,10 +33,21 @@ class Elements {
 		$this->action( 'elementor/elements/categories_registered', 'register_category' );
 		add_action( 'elementor/widgets/register', [$this, 'register_widgets'], 20 );
 		add_action( 'elementor/dynamic_tags/register', [$this, 'register_new_dynamic_tags'], 10, 1 );
-		add_action( 'wp', [$this, 'remove_the_content_filter'] );
-		add_action( 'init', [$this, 'update_directorist_template'] );
+		// add_action( 'wp', [$this, 'remove_the_content_filter'] );
+		// add_action( 'init', [$this, 'update_directorist_template'] );
+
+		add_filter( 'directorist_custom_single_listing_pre_page_content', [$this, 'single_listing_elementor_support'], 10, 2 );
 
 		self::$plugin_dir = dirname(  ( new ReflectionClass( $this ) )->getFileName() );
+		
+	}
+
+	public function single_listing_elementor_support( $content, $page ) {
+		if ( did_action( 'elementor/loaded' ) && \Elementor\Plugin::instance()->documents->get( $page->ID )->is_built_with_elementor() ) {
+			return \Elementor\Plugin::instance()->frontend->get_builder_content_for_display( $page->ID );
+		}
+	
+		return $content;
 	}
 
 	public function remove_the_content_filter() {

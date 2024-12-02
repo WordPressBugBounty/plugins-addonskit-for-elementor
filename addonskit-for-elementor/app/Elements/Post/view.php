@@ -30,13 +30,13 @@ if ( $query->have_posts() ): ?>
 
 			<div class="col-lg-<?php echo esc_attr( $columns ); ?> col-md-6 col-12">
 
-				<div id="post-<?php the_ID();?>" <?php post_class( 'theme-blog-each' );?>>
+				<div id="post-<?php the_ID();?>" <?php post_class( 'akfe-theme-blog-each' );?>>
 
-					<div class="theme-blog-card blog-grid-card">
+					<div class="akfe-theme-blog-card blog-grid-card">
 
 						<?php if ( has_post_thumbnail() ): ?>
 
-							<div class="theme-blog-card__thumbnail">
+							<div class="akfe-theme-blog-card__thumbnail">
 
 								<a href="<?php the_permalink();?>"><?php the_post_thumbnail( [ 420, 260 ] );?></a>
 
@@ -44,11 +44,11 @@ if ( $query->have_posts() ): ?>
 
 						<?php endif;?>
 
-						<div class="theme-blog-card__details">
+						<div class="akfe-theme-blog-card__details">
 
-							<div class="theme-blog-card__content">
+							<div class="akfe-theme-blog-card__content">
 
-								<h2 class="theme-blog-card__title">
+								<h2 class="akfe-theme-blog-card__title">
 
 									<a href="<?php the_permalink();?>" class="entry-title" rel="bookmark"><?php the_title();?></a>
 
@@ -56,7 +56,7 @@ if ( $query->have_posts() ): ?>
 
 								<?php if ( $data['show_expert'] ): ?>
 
-									<div class="theme-blog-card__summary entry-summary"><?php echo get_the_excerpt();?></div>
+									<div class="akfe-theme-blog-card__summary entry-summary"><?php echo get_the_excerpt();?></div>
 
 								<?php endif;?>
 
@@ -64,17 +64,17 @@ if ( $query->have_posts() ): ?>
 
 							<?php if ( $data['show_date'] || $data['show_category'] || $data['show_reading_time'] ): ?>
 
-								<div class="theme-blog-card__meta">
+								<div class="akfe-theme-blog-card__meta">
 
-									<div class="theme-blog-card__meta-list">
+									<div class="akfe-theme-blog-card__meta-list">
 
 										<ul class="list-unstyled">
 
 											<?php if ( $data['show_date'] ): ?>
 
-												<li class="theme-blog-card_date-meta">
+												<li class="akfe-theme-blog-card_date-meta">
 
-													<span class="theme-blog-card_date-meta-text updated published"><?php the_time( get_option( 'date_format' ) );?></span>
+													<span class="akfe-theme-blog-card_date-meta-text updated published"><?php the_time( get_option( 'date_format' ) );?></span>
 												
 												</li>
 
@@ -82,17 +82,17 @@ if ( $query->have_posts() ): ?>
 
 											<?php if ( $data['show_reading_time'] ): ?>
 
-												<li class="theme-blog-card_reading-time-meta"><?php echo Helper::get_reading_time( get_the_content(), 'span' ); ?></li>
+												<li class="akfe-theme-blog-card_reading-time-meta"><?php echo Helper::get_reading_time( get_the_content(), 'span' ); ?></li>
 
 											<?php endif;?>
 
 											<?php if ( $data['show_category'] ): ?>
 
-												<li class="theme-blog-card_category-meta">
+												<li class="akfe-theme-blog-card_category-meta">
 												
-													<span class="theme-blog-card_category-meta-label"><?php _e( 'In', 'addonskit-for-elementor' )?> </span>
+													<span class="akfe-theme-blog-card_category-meta-label"><?php _e( 'In', 'addonskit-for-elementor' )?> </span>
 													
-													<a href="<?php echo esc_url( $cat_link ); ?>" class="theme-blog-cat"><?php printf( "%s", esc_html( $cat_name ) );?></a>
+													<a href="<?php echo esc_url( $cat_link ); ?>" class="akfe-theme-blog-cat"><?php printf( "%s", esc_html( $cat_name ) );?></a>
 												
 												</li>
 
@@ -120,9 +120,9 @@ if ( $query->have_posts() ): ?>
 
 	<?php if( $blog_url && $show_btn ) : ?>
 
-		<div class="theme-more-btn">
+		<div class="akfe-theme-more-btn">
 
-			<a href="<?php echo esc_attr(  get_permalink( $blog_url ) ); ?>"><span class="theme-more-btn__text"><?php echo esc_html( $btn_text )?></span> <?php directorist_icon( 'fas fa-long-arrow-alt-right' ); ?></a>
+			<a href="<?php echo esc_attr(  get_permalink( $blog_url ) ); ?>"><span class="akfe-theme-more-btn__text"><?php echo esc_html( $btn_text )?></span> <?php directorist_icon( 'fas fa-long-arrow-alt-right' ); ?></a>
 
 		</div>
 

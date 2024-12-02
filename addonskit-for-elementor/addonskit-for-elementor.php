@@ -1,11 +1,10 @@
 <?php
-defined( 'ABSPATH' ) || exit;
 /**
  * Plugin Name: Directorist AddonsKit for Elementor
  * Description: Complete Elementor Widgets for Directorist.
  * Author: wpWax
  * Author URI: https://wpwax.com
- * Version: 1.1.5
+ * Version: 1.1.6
  * Elementor tested up to: 3.23.4
  * License: GPL2
  * Tested up to: 6.6
@@ -35,6 +34,8 @@ defined( 'ABSPATH' ) || exit;
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  * **********************************************************************
  */
+
+defined( 'ABSPATH' ) || exit;
 
 final class AddonskitForElementor {
 	public $version = '1.1.4';

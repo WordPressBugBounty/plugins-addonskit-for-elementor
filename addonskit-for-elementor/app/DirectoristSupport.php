@@ -11,7 +11,7 @@ class DirectoristSupport {
 	protected static $instance = null;
 
 	public function __construct() {
-		add_filter( 'atbdp_listing_type_settings_field_list', [$this, 'all_listing_widgets'] );
+		// add_filter( 'atbdp_listing_type_settings_field_list', [$this, 'all_listing_widgets'] );
 	}
 
 	public static function instance() {
