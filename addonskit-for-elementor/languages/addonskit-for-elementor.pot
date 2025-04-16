@@ -1,98 +1,98 @@
-# Copyright (C) 2024 wpWax
+# Copyright (C) 2025 wpWax
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Directorist AddonsKit for Elementor 1.1.6\n"
+"Project-Id-Version: Directorist AddonsKit for Elementor 1.1.7\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/addonskit-for-elementor\n"
-"POT-Creation-Date: 2024-12-02 07:16:52+00:00\n"
+"POT-Creation-Date: 2025-04-16 10:54:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2025-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: addonskit-for-elementor.php:77
+#: addonskit-for-elementor.php:78
 msgid ""
-"The current version of your&nbsp;%1sDirectorist is not compatible with "
+"The current version of your&nbsp;%1$sDirectorist is not compatible with "
 "Directorist Addons Kit for Elementor%2$s. To ensure compatibility and "
 "access new features,&nbsp;%1$s update Directorist to version 8.0 or "
 "later%2$s."
 msgstr ""
 
-#: addonskit-for-elementor.php:116
+#: addonskit-for-elementor.php:123
 msgid ""
 "%1$sAddonskit for Elementor%2$s requires %1$sDirectorist%2$s plugin to be "
 "active. Please activate Directorist to continue."
 msgstr ""
 
-#: addonskit-for-elementor.php:117
+#: addonskit-for-elementor.php:124
 msgid "Activate Directorist"
 msgstr ""
 
-#: addonskit-for-elementor.php:120
+#: addonskit-for-elementor.php:127
 msgid ""
 "%1$sAddonskit for Elementor%2$s requires %1$sDirectorist%2$s plugin to be "
 "installed and activated. Please install Directorist to continue."
 msgstr ""
 
-#: addonskit-for-elementor.php:121
+#: addonskit-for-elementor.php:128
 msgid "Install Directorist"
 msgstr ""
 
-#: addonskit-for-elementor.php:138
+#: addonskit-for-elementor.php:145
 msgid ""
 "%1$sAddonskit for Elementor%2$s requires %1$sElementor%2$s plugin to be "
 "active. Please activate Elementor to continue."
 msgstr ""
 
-#: addonskit-for-elementor.php:139
+#: addonskit-for-elementor.php:146
 msgid "Activate Elementor"
 msgstr ""
 
-#: addonskit-for-elementor.php:142
+#: addonskit-for-elementor.php:149
 msgid ""
 "%1$sAddonskit for Elementor%2$s requires %1$sElementor%2$s plugin to be "
 "installed and activated. Please install Elementor to continue."
 msgstr ""
 
-#: addonskit-for-elementor.php:143
+#: addonskit-for-elementor.php:150
 msgid "Install Elementor"
 msgstr ""
 
-#: addonskit-for-elementor.php:166
+#: addonskit-for-elementor.php:173
 msgid "<h1>An Error Occurred</h1>"
 msgstr ""
 
-#: addonskit-for-elementor.php:167
+#: addonskit-for-elementor.php:176
 msgid "<h2>Your installed PHP Version is: "
 msgstr ""
 
-#: addonskit-for-elementor.php:168
+#: addonskit-for-elementor.php:182
 msgid "<p>The <strong>Wax Elements</strong> plugin requires PHP version <strong>"
 msgstr ""
 
-#: addonskit-for-elementor.php:168
+#: addonskit-for-elementor.php:184
 msgid "</strong> or greater"
 msgstr ""
 
-#: addonskit-for-elementor.php:169
+#: addonskit-for-elementor.php:188
 msgid "<p>The version of your PHP is "
 msgstr ""
 
-#: addonskit-for-elementor.php:169
+#: addonskit-for-elementor.php:190
 msgid "unsupported and old"
 msgstr ""
 
-#: addonskit-for-elementor.php:170
+#: addonskit-for-elementor.php:191
 msgid ""
 "You should update your PHP software or contact your host regarding this "
 "matter.</p>"
 msgstr ""
 
-#: addonskit-for-elementor.php:173
+#: addonskit-for-elementor.php:196
 msgid "Plugin Activation Error"
 msgstr ""
 
@@ -615,10 +615,12 @@ msgid "View As"
 msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:94
+#: app/Elements/AllLocations/AllLocations.php:95
 msgid "Grid View"
 msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:95
+#: app/Elements/AllLocations/AllLocations.php:96
 msgid "List View"
 msgstr ""
 
@@ -990,7 +992,6 @@ msgid "Listings Found"
 msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:124
-#: app/Elements/AllLocations/AllLocations.php:95
 #: app/Elements/SearchResult/SearchResult.php:109
 #: app/Elements/SingleCategory/SingleCategory.php:125
 #: app/Elements/SingleLocation/SingleLocation.php:125
@@ -999,7 +1000,6 @@ msgid "Grid"
 msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:125
-#: app/Elements/AllLocations/AllLocations.php:96
 #: app/Elements/SearchResult/SearchResult.php:110
 #: app/Elements/SingleCategory/SingleCategory.php:126
 #: app/Elements/SingleLocation/SingleLocation.php:126
@@ -1576,7 +1576,7 @@ msgstr ""
 msgid "In"
 msgstr ""
 
-#: app/Elements/Post/view.php:133
+#: app/Elements/Post/view.php:139
 msgid "Currently there are no posts"
 msgstr ""
 
@@ -2003,11 +2003,11 @@ msgid ""
 "\t\t\t\t\t\t\t</div>"
 msgstr ""
 
-#: app/Elements/SingleListingFields/SocialInfo/SocialInfo.php:122
+#: app/Elements/SingleListingFields/SocialInfo/SocialInfo.php:128
 msgid "Nothing to found!"
 msgstr ""
 
-#: app/Elements/SingleListingFields/SocialInfo/SocialInfo.php:123
+#: app/Elements/SingleListingFields/SocialInfo/SocialInfo.php:129
 msgid "There is no social item in the current listing."
 msgstr ""
 
@@ -2278,15 +2278,15 @@ msgstr ""
 msgid "Privacy & Policy"
 msgstr ""
 
-#: app/Utils/Helper.php:78
+#: app/Utils/Helper.php:77
 msgid "secs"
 msgstr ""
 
-#: app/Utils/Helper.php:81
+#: app/Utils/Helper.php:80
 msgid "mins"
 msgstr ""
 
-#: app/Utils/Helper.php:84
+#: app/Utils/Helper.php:83
 msgid "read"
 msgstr ""
 

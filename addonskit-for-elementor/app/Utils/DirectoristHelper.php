@@ -26,9 +26,9 @@ class DirectoristHelper {
 	public static function get_listing_checked_items( $data ) {
 		$options = [];
 		foreach ( $data['options'] as $value ) {
-			$options[] = $value['option_label'];
+			$options[] = esc_html($value['option_label']);
 		}
-		echo join( ', ', $options );
+		echo esc_html(join( ', ', $options ));
 	}
 
 	public static function get_preset_fields( $directory_type ) {
@@ -61,7 +61,9 @@ class DirectoristHelper {
 
 		$final_data = [];
 		foreach ( $filteredArray as $data ) {
-			$final_data[] = [$data => $contents['fields'][$data]['label']];
+			if ( 'terms_privacy' != $data ) {
+				$final_data[] = [$data => $contents['fields'][$data]['label']];
+			}
 		}
 		$final_data = array_merge( ...$final_data );
 
@@ -82,9 +84,17 @@ class DirectoristHelper {
 			'file',
 			'url',
 			'video',
+			'phone',
+			'website',
 		];
 
-		$filteredArray = array_intersect( $all_data, $except_data );
+		// Create a regex pattern to match any key that starts with the except_data keys
+		$pattern = '/^(' . implode('|', array_map('preg_quote', $except_data)) . ')/';
+
+		// Filter the all_data array
+		$filteredArray = array_filter($all_data, function($item) use ($pattern) {
+			return preg_match($pattern, $item);
+		});
 
 		$final_data = [];
 		foreach ( $filteredArray as $data ) {
@@ -109,7 +119,15 @@ class DirectoristHelper {
 			'color_picker',
 		];
 
-		$filteredArray = array_intersect( $all_data, $except_data );
+		// Create a regex pattern to match any key that starts with the except_data keys
+		$pattern = '/^(' . implode('|', array_map('preg_quote', $except_data)) . ')/';
+
+		// Filter the all_data array
+		$filteredArray = array_filter($all_data, function($item) use ($pattern) {
+			return preg_match($pattern, $item);
+		});
+
+		// $filteredArray = array_intersect( $all_data, $except_data );
 
 		$final_data = [];
 		foreach ( $filteredArray as $data ) {
@@ -227,7 +245,7 @@ class DirectoristHelper {
 				break;
 
 			default:
-				echo $single->get_field_value( $data );
+				echo wp_kses_post($single->get_field_value( $data ));
 				break;
 		}
 	}
@@ -240,9 +258,9 @@ class DirectoristHelper {
 
 		$single = Directorist_Single_Listing::instance( get_the_ID() );
 
-		echo '<div class="directorist-single-wrapper">';
+		echo wp_kses_post('<div class="directorist-single-wrapper">');
 		$single->section_template( $args );
-		echo '</div>';
+		echo wp_kses_post('</div>');
 	}
 
 	public static function get_single_listing_info( $widget_name = '' ) {
@@ -269,7 +287,7 @@ class DirectoristHelper {
 			}
 		}
 		unset( $args['options'] );
-		echo $single->field_template( $args );
+		echo wp_kses_post($single->field_template( $args ));
 	}
 
 	public static function get_header_quick_info_fields( $placeholderKey ) {
@@ -307,7 +325,7 @@ class DirectoristHelper {
 	}
 
 	public static function directorist_multi_directory() {
-		$types = count( \directory_types() );
+		$types = is_array(\directory_types()) && ! empty( \directory_types()) ? count( \directory_types() ) : '';
 
 		return \directorist_multi_directory() && ( 1 < $types ) ? true : false;
 	}

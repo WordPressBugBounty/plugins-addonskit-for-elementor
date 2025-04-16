@@ -92,8 +92,8 @@ class AllLocations extends Widget_Base {
 				'label'     => __( 'View As', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => [
-					'grid' => __( 'Grid', 'addonskit-for-elementor' ),
-					'list' => __( 'List', 'addonskit-for-elementor' ),
+					'grid' => __( 'Grid View', 'addonskit-for-elementor' ),
+					'list' => __( 'List View', 'addonskit-for-elementor' ),
 				],
 				'default'   => 'grid',
 				'separator' => 'before',
@@ -229,7 +229,7 @@ class AllLocations extends Widget_Base {
 		$atts     = [
 			'view'                => $settings['view'],
 			'columns'             => $settings['columns'],
-			'loc_per_page'        => $settings['number_loc'],
+			'loc_per_page'        => empty($settings['number_loc']) ? 3 : $settings['number_loc'],
 			'orderby'             => $settings['order_by'],
 			'order'               => $settings['order_list'],
 			'logged_in_user_only' => $settings['user'] ?? 'no',

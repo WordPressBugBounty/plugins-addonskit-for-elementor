@@ -11,14 +11,13 @@ use Elementor\Plugin;
 
 class Helper {
     public static function run_shortcode( $tag, $atts = [], $content = null ) {
-
         global $shortcode_tags;
 
         if ( ! isset( $shortcode_tags[$tag] ) ) {
             return false;
         }
 
-        echo call_user_func( $shortcode_tags[$tag], $atts, $content, $tag );
+        echo wp_kses_post(call_user_func( $shortcode_tags[$tag], $atts, $content, $tag ));
     }
 
     public static function is_edit() {
@@ -68,7 +67,7 @@ class Helper {
     }
 
     public static function get_reading_time( $content, $tag ) {
-        $stripped_content = strip_tags( $content );
+        $stripped_content = wp_strip_all_tags( $content );
         $total_word = str_word_count( $stripped_content );
         $reading_minute = floor( $total_word / 200 );
         $reading_seconds = floor( $total_word % 200 / ( 200 / 60 ) );

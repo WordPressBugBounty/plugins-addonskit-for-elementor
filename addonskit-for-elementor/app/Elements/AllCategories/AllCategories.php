@@ -227,7 +227,7 @@ class AllCategories extends Widget_Base {
 		$atts     = [
 			'view'                => $settings['view'],
 			'columns'             => $settings['columns'],
-			'cat_per_page'        => $settings['number_cat'],
+			'cat_per_page'        => empty($settings['number_cat']) ? 3 : $settings['number_cat'],
 			'orderby'             => $settings['order_by'],
 			'order'               => $settings['order_list'],
 			'logged_in_user_only' => $settings['user'] ?? 'no',

@@ -4,10 +4,10 @@
  * Description: Complete Elementor Widgets for Directorist.
  * Author: wpWax
  * Author URI: https://wpwax.com
- * Version: 1.1.6
- * Elementor tested up to: 3.23.4
+ * Version: 1.1.7
+ * Elementor tested up to: 3.28.3
  * License: GPL2
- * Tested up to: 6.6
+ * Tested up to: 6.8
  * Requires PHP: 7.4
  * Text Domain: addonskit-for-elementor
  * Domain Path: /languages
@@ -38,7 +38,7 @@
 defined( 'ABSPATH' ) || exit;
 
 final class AddonskitForElementor {
-	public $version = '1.1.4';
+	public $version = '1.1.7';
 
 	private $min_php = '7.4';
 
@@ -74,13 +74,20 @@ final class AddonskitForElementor {
 	}
 
 	public function directorist_required_version_notice() {
-			$message = sprintf( __( 'The current version of your&nbsp;%1sDirectorist is not compatible with Directorist Addons Kit for Elementor%2$s. To ensure compatibility and access new features,&nbsp;%1$s update Directorist to version 8.0 or later%2$s.', 'addonskit-for-elementor' ),
-				"<strong>",
-				"</strong>"
+			$message = sprintf(
+				esc_html__('The current version of your&nbsp;%1$sDirectorist is not compatible with Directorist Addons Kit for Elementor%2$s. To ensure compatibility and access new features,&nbsp;%1$s update Directorist to version 8.0 or later%2$s.', 'addonskit-for-elementor'),
+				'<strong>',
+				'</strong>'
 			);
 
-		printf( '<div class="error"><p>%s</p></div>', __( $message, 'addonskit-for-elementor' ) );
-	}
+			printf(
+				'<div class="error"><p>%s</p></div>',
+				wp_kses($message, [
+					'strong' => [],
+					'nbsp' => []
+				])
+			);
+		}
 
 	private function activated_required_plugins(): bool {
 
@@ -163,13 +170,29 @@ final class AddonskitForElementor {
 
 		deactivate_plugins( basename( __FILE__ ) );
 
-		$error = __( '<h1>An Error Occurred</h1>', 'addonskit-for-elementor' );
-		$error .= __( '<h2>Your installed PHP Version is: ', 'addonskit-for-elementor' ) . PHP_VERSION . '</h2>';
-		$error .= __( '<p>The <strong>Wax Elements</strong> plugin requires PHP version <strong>', 'addonskit-for-elementor' ) . $this->min_php . __( '</strong> or greater', 'addonskit-for-elementor' );
-		$error .= __( '<p>The version of your PHP is ', 'addonskit-for-elementor' ) . '<a href="http://php.net/supported-versions.php" target="_blank"><strong>' . __( 'unsupported and old', 'addonskit-for-elementor' ) . '</strong></a>.';
-		$error .= __( 'You should update your PHP software or contact your host regarding this matter.</p>', 'addonskit-for-elementor' );
+		$error = esc_html__( '<h1>An Error Occurred</h1>', 'addonskit-for-elementor' );
+		$error .= sprintf(
+			'%s%s%s',
+			esc_html__( '<h2>Your installed PHP Version is: ', 'addonskit-for-elementor' ),
+			esc_html(PHP_VERSION),
+			'</h2>'
+		);
+		$error .= sprintf(
+			'%s%s%s',
+			esc_html__( '<p>The <strong>Wax Elements</strong> plugin requires PHP version <strong>', 'addonskit-for-elementor' ),
+			esc_html($this->min_php),
+			esc_html__( '</strong> or greater', 'addonskit-for-elementor' )
+		);
+		$error .= sprintf(
+			'%s<a href="%s" target="_blank"><strong>%s</strong></a>%s',
+			esc_html__( '<p>The version of your PHP is ', 'addonskit-for-elementor' ),
+			esc_url('http://php.net/supported-versions.php'),
+			esc_html__( 'unsupported and old', 'addonskit-for-elementor' ),
+			esc_html__( 'You should update your PHP software or contact your host regarding this matter.</p>', 'addonskit-for-elementor' )
+		);
+
 		wp_die(
-			wp_kses_post( $error ),
+			wp_kses_post($error),
 			esc_html__( 'Plugin Activation Error', 'addonskit-for-elementor' ),
 			[
 				'response'  => 200,

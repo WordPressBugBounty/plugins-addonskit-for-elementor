@@ -115,15 +115,22 @@ class SocialInfo extends Widget_Base {
             $social = get_post_meta( get_the_ID(), '_social', true );
             if ( empty( $social ) ) {
                 printf(
-                    '<div class="elementor-alert elementor-alert-info" role="alert">
-							<span class="elementor-alert-title">%s</span>
-							<span class="elementor-alert-description">%s</span>
-							</div>',
-                    __( 'Nothing to found!', 'addonskit-for-elementor' ),
-                    __( 'There is no social item in the current listing.', 'addonskit-for-elementor' )
+                    wp_kses(
+                        '<div class="elementor-alert elementor-alert-info" role="alert">
+                            <span class="elementor-alert-title">%s</span>
+                            <span class="elementor-alert-description">%s</span>
+                        </div>',
+                        [
+                            'div'  => ['class' => [], 'role' => []],
+                            'span' => ['class' => []]
+                        ]
+                    ),
+                    esc_html__( 'Nothing to found!', 'addonskit-for-elementor' ),
+                    esc_html__( 'There is no social item in the current listing.', 'addonskit-for-elementor' )
                 );
             }
         }
-        DirectoristHelper::get_single_listing_fields( 'social_info', get_the_ID() );
+        
+        DirectoristHelper::get_single_listing_fields( 'social_info' );
     }
 }

@@ -190,27 +190,27 @@ class Elements {
 		$elements_manager->add_category(
 			'directorist-widgets',
 			[
-				'title' => __( 'Directorist', 'addonskit-for-elementor' ),
+				'title' => esc_html__( 'Directorist', 'addonskit-for-elementor' ),
 			]
 		);
 	}
 
 	public function editor_style() {
-		$img = DIRECTORIST_ASSETS . 'images/elementor-icon.png';
-		wp_add_inline_style( 'elementor-editor', '.elementor-control-type-select2 .elementor-control-input-wrapper {min-width: 130px;}.elementor-element .icon .directorist-el-custom{content: url(' . $img . ');width: 22px;}' );
+		$img = esc_url(DIRECTORIST_ASSETS . 'images/elementor-icon.png');
+		wp_add_inline_style( 'elementor-editor', '.elementor-control-type-select2 .elementor-control-input-wrapper {min-width: 130px;}.elementor-element .icon .directorist-el-custom{content: url(' . esc_url($img) . ');width: 22px;}' );
 	}
 
 	public static function wpwax_template( $template, $data ) {
-		$template_name = '/elementor-support/' . basename( self::$plugin_dir ) . '/' . $template . '.php';
+		$template_name = '/elementor-support/' . esc_attr(basename( self::$plugin_dir )) . '/' . esc_attr($template) . '.php';
 
 		if ( file_exists( WP_DEFAULT_THEME . $template_name ) ) {
 			$file = WP_DEFAULT_THEME . $template_name;
 		} else {
-			$file = self::$plugin_dir . '/' . $template . '.php';
+			$file = self::$plugin_dir . '/' . esc_attr($template) . '.php';
 		}
 
 		ob_start();
 		include $file;
-		echo ob_get_clean();
+		echo wp_kses_post(ob_get_clean());
 	}
 }

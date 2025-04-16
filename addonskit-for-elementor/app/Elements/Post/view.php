@@ -18,7 +18,7 @@ $btn_text   = isset( $data['show_more_button_text'] ) ? $data['show_more_button_
 
 if ( $query->have_posts() ): ?>
 
-	<div class="row theme-row">
+	<div class="akfe-row">
 
 		<?php
 		while ( $query->have_posts() ):
@@ -28,9 +28,9 @@ if ( $query->have_posts() ): ?>
 			$cat_name   = $get_cat_ob[0]->name;
 			?>
 
-			<div class="col-lg-<?php echo esc_attr( $columns ); ?> col-md-6 col-12">
+			<div class="akfe-col-lg-<?php echo esc_attr( $columns ); ?> akfe-col-md-6 akfe-col-12">
 
-				<div id="post-<?php the_ID();?>" <?php post_class( 'akfe-theme-blog-each' );?>>
+				<div id="post-<?php echo esc_attr(get_the_ID()); ?>" <?php post_class( 'akfe-theme-blog-each' ); ?>>
 
 					<div class="akfe-theme-blog-card blog-grid-card">
 
@@ -38,11 +38,11 @@ if ( $query->have_posts() ): ?>
 
 							<div class="akfe-theme-blog-card__thumbnail">
 
-								<a href="<?php the_permalink();?>"><?php the_post_thumbnail( [ 420, 260 ] );?></a>
+								<a href="<?php echo esc_url(get_permalink()); ?>"><?php the_post_thumbnail( [ 420, 260 ] ); ?></a>
 
-							</div>							
+							</div>
 
-						<?php endif;?>
+						<?php endif; ?>
 
 						<div class="akfe-theme-blog-card__details">
 
@@ -50,15 +50,15 @@ if ( $query->have_posts() ): ?>
 
 								<h2 class="akfe-theme-blog-card__title">
 
-									<a href="<?php the_permalink();?>" class="entry-title" rel="bookmark"><?php the_title();?></a>
+									<a href="<?php echo esc_url(get_permalink()); ?>" class="entry-title" rel="bookmark"><?php echo esc_html(get_the_title()); ?></a>
 
 								</h2>
 
 								<?php if ( $data['show_expert'] ): ?>
 
-									<div class="akfe-theme-blog-card__summary entry-summary"><?php echo get_the_excerpt();?></div>
+									<div class="akfe-theme-blog-card__summary entry-summary"><?php echo wp_kses_post(get_the_excerpt()); ?></div>
 
-								<?php endif;?>
+								<?php endif; ?>
 
 							</div>
 
@@ -74,29 +74,29 @@ if ( $query->have_posts() ): ?>
 
 												<li class="akfe-theme-blog-card_date-meta">
 
-													<span class="akfe-theme-blog-card_date-meta-text updated published"><?php the_time( get_option( 'date_format' ) );?></span>
-												
+													<span class="akfe-theme-blog-card_date-meta-text updated published"><?php echo esc_html(get_the_time( get_option( 'date_format' ) )); ?></span>
+
 												</li>
 
-											<?php endif;?>
+											<?php endif; ?>
 
 											<?php if ( $data['show_reading_time'] ): ?>
 
-												<li class="akfe-theme-blog-card_reading-time-meta"><?php echo Helper::get_reading_time( get_the_content(), 'span' ); ?></li>
+												<li class="akfe-theme-blog-card_reading-time-meta"><?php echo wp_kses_post(Helper::get_reading_time( get_the_content(), 'span' )); ?></li>
 
-											<?php endif;?>
+											<?php endif; ?>
 
 											<?php if ( $data['show_category'] ): ?>
 
 												<li class="akfe-theme-blog-card_category-meta">
-												
-													<span class="akfe-theme-blog-card_category-meta-label"><?php _e( 'In', 'addonskit-for-elementor' )?> </span>
-													
-													<a href="<?php echo esc_url( $cat_link ); ?>" class="akfe-theme-blog-cat"><?php printf( "%s", esc_html( $cat_name ) );?></a>
-												
+
+													<span class="akfe-theme-blog-card_category-meta-label"><?php esc_html_e( 'In', 'addonskit-for-elementor' ); ?> </span>
+
+													<a href="<?php echo esc_url( $cat_link ); ?>" class="akfe-theme-blog-cat"><?php echo esc_html( $cat_name ); ?></a>
+
 												</li>
 
-											<?php endif;?>
+											<?php endif; ?>
 
 										</ul>
 
@@ -104,7 +104,7 @@ if ( $query->have_posts() ): ?>
 
 								</div>
 
-							<?php endif;?>
+							<?php endif; ?>
 
 						</div>
 
@@ -122,7 +122,13 @@ if ( $query->have_posts() ): ?>
 
 		<div class="akfe-theme-more-btn">
 
-			<a href="<?php echo esc_attr(  get_permalink( $blog_url ) ); ?>"><span class="akfe-theme-more-btn__text"><?php echo esc_html( $btn_text )?></span> <?php directorist_icon( 'fas fa-long-arrow-alt-right' ); ?></a>
+			<a href="<?php echo esc_url(get_permalink( $blog_url )); ?>">
+
+				<span class="akfe-theme-more-btn__text"><?php echo esc_html( $btn_text ); ?></span>
+
+				<?php directorist_icon( 'fas fa-long-arrow-alt-right' ); ?>
+
+			</a>
 
 		</div>
 

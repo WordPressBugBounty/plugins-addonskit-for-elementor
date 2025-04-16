@@ -47,13 +47,13 @@ class FieldsUrl extends Tags {
 
         if ( 'file' === $settings['field'] ) {
             ob_start();
-            DirectoristHelper::get_single_listing_fields( $settings['field'], get_the_ID() );
+            DirectoristHelper::get_single_listing_fields( $settings['field'] );
             $value = ob_get_clean();
             $done  = str_replace( '|||', '', $value );
 
-            echo $done;
+            echo esc_url($done);
         } else {
-            DirectoristHelper::get_single_listing_fields( $settings['field'], get_the_ID() );
+            DirectoristHelper::get_single_listing_fields( $settings['field'] );
         }
     }
 }
