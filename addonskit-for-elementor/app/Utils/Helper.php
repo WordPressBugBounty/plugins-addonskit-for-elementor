@@ -16,8 +16,9 @@ class Helper {
         if ( ! isset( $shortcode_tags[$tag] ) ) {
             return false;
         }
-
-        echo wp_kses_post(call_user_func( $shortcode_tags[$tag], $atts, $content, $tag ));
+        
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        echo call_user_func( $shortcode_tags[$tag], $atts, $content, $tag );
     }
 
     public static function is_edit() {

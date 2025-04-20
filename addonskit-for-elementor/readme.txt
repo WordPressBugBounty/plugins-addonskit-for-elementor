@@ -3,7 +3,7 @@ Contributors: wpwax
 Tags: addons kit, elementor widget, directory, templates, directory websites  
 Requires at least: 6.0  
 Tested up to: 6.8
-Stable tag: 1.1.7
+Stable tag: 1.1.9
 Requires PHP: 7.4  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
@@ -46,6 +46,12 @@ Works seamlessly with Directorist-compatible themes, including [Pixetiq](https:/
 Regular updates and premium support ensure a smooth experience with Directorist AddonsKit for Elementor.  
 
 == Changelog ==
+
+= 1.1.9 - Apr 20, 2025 =
+* Fix: Stable version issue
+
+= 1.1.8 - Apr 20, 2025 =
+* Fix: search-form broken Issue
 
 = 1.1.7 - Apr 16, 2025 =
 * Fix: Security Vulnerability Issue

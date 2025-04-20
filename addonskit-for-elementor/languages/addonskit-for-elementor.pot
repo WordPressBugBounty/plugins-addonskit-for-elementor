@@ -2,10 +2,10 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Directorist AddonsKit for Elementor 1.1.7\n"
+"Project-Id-Version: Directorist AddonsKit for Elementor 1.1.9\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/addonskit-for-elementor\n"
-"POT-Creation-Date: 2025-04-16 10:54:35+00:00\n"
+"POT-Creation-Date: 2025-04-20 08:19:26+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2278,15 +2278,15 @@ msgstr ""
 msgid "Privacy & Policy"
 msgstr ""
 
-#: app/Utils/Helper.php:77
+#: app/Utils/Helper.php:78
 msgid "secs"
 msgstr ""
 
-#: app/Utils/Helper.php:80
+#: app/Utils/Helper.php:81
 msgid "mins"
 msgstr ""
 
-#: app/Utils/Helper.php:83
+#: app/Utils/Helper.php:84
 msgid "read"
 msgstr ""
 

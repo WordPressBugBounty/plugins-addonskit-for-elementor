@@ -4,7 +4,7 @@
  * Description: Complete Elementor Widgets for Directorist.
  * Author: wpWax
  * Author URI: https://wpwax.com
- * Version: 1.1.7
+ * Version: 1.1.9
  * Elementor tested up to: 3.28.3
  * License: GPL2
  * Tested up to: 6.8
@@ -38,7 +38,7 @@
 defined( 'ABSPATH' ) || exit;
 
 final class AddonskitForElementor {
-	public $version = '1.1.7';
+	public $version = '1.1.9';
 
 	private $min_php = '7.4';
 
