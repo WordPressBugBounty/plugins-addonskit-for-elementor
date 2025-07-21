@@ -51,7 +51,8 @@ class AuthorInfo extends Widget_Base {
     }
 
     public function show_in_panel() {
-        return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+        return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
     }
 
     protected function register_controls(): void {
@@ -72,16 +73,13 @@ class AuthorInfo extends Widget_Base {
             'important_note',
             [
                 'type' => Controls_Manager::RAW_HTML,
-                'raw'  => __(
-                    '<div id="elementor-panel-elements-notice-area">
+                'raw'  => '<div id="elementor-panel-elements-notice-area">
 								<div id="elementor-panel-notice-wrapper">
 									<div class="elementor-panel-notice elementor-panel-alert elementor-panel-info-info">
-										<strong>This widget will show the listing author information\'s.</strong>
+										<strong>'. esc_html__( 'This widget will show the listing author information\'s.', 'addonskit-for-elementor' ) . '</strong>
 									</div>
 								</div>
 							</div>',
-                    'addonskit-for-elementor'
-                ),
             ]
         );
 
@@ -100,11 +98,11 @@ class AuthorInfo extends Widget_Base {
     protected function register_styles() {
 
         $this->register_container_style_controls( __( 'Container', 'addonskit-for-elementor' ), 'profile_area', '.directorist-single-wrapper .directorist-card' );
-        $this->register_text_controls( __( 'Title', 'addonskit-for-elementor' ), 'author_info_section_title', '.directorist-card__header--title span' );
+        $this->register_text_controls( __( 'Section label', 'addonskit-for-elementor' ), 'author_info_section_title', '.directorist-card__header__title' );
         $this->register_author_profile_info();
         $this->register_author_contact_style_controls();
-        $this->register_icon_style( __( 'social icon style', 'addonskit-for-elementor' ), 'author_social_info', '.directorist-author-social-item a' );
-        $this->register_button2_style( __( 'Button Style', 'addonskit-for-elementor' ), 'view_profile_style', '.directorist-btn.directorist-btn-light' );
+        $this->register_icon_style( __( 'Author Social', 'addonskit-for-elementor' ), 'author_social_info', '.directorist-author-social-item a' );
+        $this->register_button2_style( __( 'View Profile Button', 'addonskit-for-elementor' ), 'view_profile_style', '.directorist-btn.directorist-btn-light' );
     }
 
     public function render(): void {
@@ -115,9 +113,9 @@ class AuthorInfo extends Widget_Base {
             'listing'     => $single,
             'type'        => 'section',
             'widget_name' => 'author_info',
-            'label'       => empty( $settings['label'] ) ? '' : esc_html( $settings['label'] ),
+            'label'       => $settings['label'],
         ];
 
-        DirectoristHelper::get_single_listing_other_fields( $args, get_the_ID() );
+        DirectoristHelper::get_single_listing_other_fields($args);
     }
 }

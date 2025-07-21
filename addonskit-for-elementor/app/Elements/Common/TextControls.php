@@ -76,7 +76,6 @@ trait TextControls {
                     "{{WRAPPER}} {$selector}"       => 'color: {{VALUE}} !important;',
                     "{{WRAPPER}} {$selector}:after" => 'background-color: {{VALUE}};',
                 ],
-                'separator' => 'before',
             ]
         );
 

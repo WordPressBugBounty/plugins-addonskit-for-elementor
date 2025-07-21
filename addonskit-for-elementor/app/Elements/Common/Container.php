@@ -45,7 +45,6 @@ trait Container {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -64,7 +63,6 @@ trait Container {
             [
                 'name'      => "{$prefix}_border",
                 'selector'  => "{{WRAPPER}} {$selector}",
-                'separator' => 'before',
             ]
         );
 

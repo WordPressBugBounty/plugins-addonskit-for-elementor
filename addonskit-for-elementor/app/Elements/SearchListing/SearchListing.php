@@ -10,7 +10,6 @@ namespace AddonskitForElementor\Elements\SearchListing;
 use AddonskitForElementor\Elements\Common\DirectoryTypeStyles;
 use AddonskitForElementor\Elements\Common\TextControls;
 use AddonskitForElementor\Utils\DirectoristTaxonomies;
-use AddonskitForElementor\Utils\DirectoristHelper;
 use Elementor\Controls_Manager;
 use AddonskitForElementor\Utils\Helper;
 use Elementor\Widget_Base;
@@ -62,12 +61,20 @@ class SearchListing extends Widget_Base {
         );
 
         $this->add_control(
+			'heading_area',
+			[
+				'label' => esc_html__( 'Heading Area', 'addonskit-for-elementor' ),
+				'type' => Controls_Manager::HEADING,
+			]
+		);
+
+        $this->add_control(
             'show_subtitle',
             [
-                'label'     => __( 'Title & Subtitle?', 'addonskit-for-elementor' ),
+                'label'     => __( 'Display Header Section', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __( 'Show', 'addonskit-for-elementor' ),
-                'label_off' => __( 'Hide', 'addonskit-for-elementor' ),
+                'label_on'  => __( 'Enable', 'addonskit-for-elementor' ),
+                'label_off' => __( 'Disable', 'addonskit-for-elementor' ),
                 'default'   => 'yes',
             ]
         );
@@ -95,7 +102,7 @@ class SearchListing extends Widget_Base {
         $this->add_control(
             'title_subtitle_alignment',
             [
-                'label'     => __( 'Content Alignment', 'addonskit-for-elementor' ),
+                'label'     => __( 'Title & Subtitle Alignment', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::CHOOSE,
                 'options'   => [
                     'left'   => [
@@ -115,23 +122,29 @@ class SearchListing extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .directorist-search-top__title'        => 'text-align: {{VALUE}}',
                     '{{WRAPPER}} .directorist-search-top__subtitle'     => 'text-align: {{VALUE}}',
-                    '{{WRAPPER}} ul.directorist-listing-type-selection' => 'justify-content: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-listing-category-top ul'  => 'justify-content: {{VALUE}}',
                 ],
                 'condition' => [ 'show_subtitle' => [ 'yes' ] ],
             ]
         );
 
         $this->add_control(
+			'type_area',
+			[
+				'label' => esc_html__( 'Directory Type Area', 'addonskit-for-elementor' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+        $this->add_control(
             'type',
             [
-                'label'     => __( 'Directory Types', 'addonskit-for-elementor' ),
+                'label'     => __( 'Choose Types', 'addonskit-for-elementor' ),
                 'description'     => __( 'Leave it empty for showing all directory types', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::SELECT2,
                 'multiple'  => true,
                 'options'   => DirectoristTaxonomies::directory_types(),
-                'condition' => DirectoristHelper::directorist_multi_directory() ? '' : [ 'nocondition' => true ],
-                'separator' => 'before',
+                'condition' => directorist_is_multi_directory_enabled() ? '' : [ 'nocondition' => true ],
             ]
         );
 
@@ -142,9 +155,77 @@ class SearchListing extends Widget_Base {
                 'type'      => Controls_Manager::SELECT,
                 'multiple'  => true,
                 'options'   => DirectoristTaxonomies::directory_types(),
-                'condition' => DirectoristHelper::directorist_multi_directory() ? '' : [ 'nocondition' => true ],
+                'condition' => directorist_is_multi_directory_enabled() ? '' : [ 'nocondition' => true ],
             ]
         );
+
+        $this->add_responsive_control(
+			'type_align',
+			[
+				'label'     => esc_html__( 'Type Alignment', 'addonskit-for-elementor' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'start'  => [
+						'title' => esc_html__( 'Left', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'end'    => [
+						'title' => esc_html__( 'Right', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}} ul.directorist-listing-type-selection' => 'justify-content: {{VALUE}}',
+				],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
+			]
+		);
+
+        $this->add_responsive_control(
+			'type_display',
+			[
+				'label'     => esc_html__( 'Icon Position', 'addonskit-for-elementor' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'top' => [
+						'title' => esc_html__( 'Default', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-arrow-up',
+					],
+					'column-reverse' => [
+						'title' => esc_html__( 'Column Reverse', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-arrow-down',
+					],
+					'row'  => [
+						'title' => esc_html__( 'Row', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-arrow-left',
+					],
+					'row-reverse' => [
+						'title' => esc_html__( 'Row Reverse', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-arrow-right',
+					],
+				],
+				'default'   => 'top',
+				'selectors' => [
+					'{{WRAPPER}} .directorist-listing-type-selection .search_listing_types' => 'flex-direction: {{VALUE}};',
+					'{{WRAPPER}} .directorist-listing-type-selection .search_listing_types .directorist-icon-mask' => 'margin-bottom: 0px;',
+				],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
+			]
+		);
+
+        $this->add_control(
+			'search_form_area',
+			[
+				'label' => esc_html__( 'Search Form', 'addonskit-for-elementor' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
 
         $this->add_control(
             'search_btn_text',
@@ -152,19 +233,41 @@ class SearchListing extends Widget_Base {
                 'label'     => __( 'Search Button Label', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::TEXT,
                 'default'   => __( 'Search Listing', 'addonskit-for-elementor' ),
-                'separator' => 'before',
             ]
         );
 
         $this->add_control(
             'show_more_filter_btn',
             [
-                'label'     => __( 'More Search Fields?', 'addonskit-for-elementor' ),
+                'label'     => __( 'Enable Advanced Filters', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __( 'Show', 'addonskit-for-elementor' ),
-                'label_off' => __( 'Hide', 'addonskit-for-elementor' ),
+                'label_on'  => __( 'Enable', 'addonskit-for-elementor' ),
+                'label_off' => __( 'Disable', 'addonskit-for-elementor' ),
                 'default'   => 'yes',
-                'separator' => 'before',
+            ]
+        );
+
+        $this->add_control(
+            'more_filter_reset_btn',
+            [
+                'label'     => __( 'Enable Reset Button', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::SWITCHER,
+                'label_on'  => __( 'Enable', 'addonskit-for-elementor' ),
+                'label_off' => __( 'Disable', 'addonskit-for-elementor' ),
+                'default'   => 'yes',
+                'condition' => [ 'show_more_filter_btn' => [ 'yes' ] ],
+            ]
+        );
+
+        $this->add_control(
+            'more_filter_search_btn',
+            [
+                'label'     => __( 'Enable Apply Button', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::SWITCHER,
+                'label_on'  => __( 'Enable', 'addonskit-for-elementor' ),
+                'label_off' => __( 'Disable', 'addonskit-for-elementor' ),
+                'default'   => 'yes',
+                'condition' => [ 'show_more_filter_btn' => [ 'yes' ] ],
             ]
         );
 
@@ -175,19 +278,6 @@ class SearchListing extends Widget_Base {
                 'type'      => Controls_Manager::TEXT,
                 'default'   => __( 'More Filters', 'addonskit-for-elementor' ),
                 'condition' => [ 'show_more_filter_btn' => [ 'yes' ] ],
-            ]
-        );
-
-        $this->add_control(
-            'more_filter_reset_btn',
-            [
-                'label'     => __( 'Reset Filters?', 'addonskit-for-elementor' ),
-                'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __( 'Show', 'addonskit-for-elementor' ),
-                'label_off' => __( 'Hide', 'addonskit-for-elementor' ),
-                'default'   => 'yes',
-                'condition' => [ 'show_more_filter_btn' => [ 'yes' ] ],
-                'separator' => 'before',
             ]
         );
 
@@ -205,19 +295,6 @@ class SearchListing extends Widget_Base {
         );
 
         $this->add_control(
-            'more_filter_search_btn',
-            [
-                'label'     => __( 'Apply Filters?', 'addonskit-for-elementor' ),
-                'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __( 'Show', 'addonskit-for-elementor' ),
-                'label_off' => __( 'Hide', 'addonskit-for-elementor' ),
-                'default'   => 'yes',
-                'condition' => [ 'show_more_filter_btn' => [ 'yes' ] ],
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
             'more_filter_search_btn_text',
             [
                 'label'     => __( 'Button Label', 'addonskit-for-elementor' ),
@@ -231,36 +308,56 @@ class SearchListing extends Widget_Base {
         );
 
         $this->add_control(
-            'more_filter',
-            [
-                'label'     => __( 'Open Filter Fields', 'addonskit-for-elementor' ),
-                'type'      => Controls_Manager::SELECT,
-                'options'   => [
-                    'overlapping' => __( 'Overlapping', 'addonskit-for-elementor' ),
-                    'sliding'     => __( 'Sliding', 'addonskit-for-elementor' ),
-                    'always_open' => __( 'Always Open', 'addonskit-for-elementor' ),
-                ],
-                'default'   => 'overlapping',
-                'separator' => 'before',
-            ]
-        );
+			'popular_category_area',
+			[
+				'label' => esc_html__( 'Popular Category', 'addonskit-for-elementor' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
         
         $this->add_control(
             'show_popular_category',
             [
-                'label'     => __( 'Show Popular Categories', 'addonskit-for-elementor' ),
-                'description'     => __( 'Number of popular categories to show: ', 'addonskit-for-elementor' ) . "<a target='_blank' href=" . admin_url('edit.php?post_type=at_biz_dir&page=atbdp-settings#search_settings__search_form') . ">click here</a>",
+                'label'     => __( 'Enable Popular Categories', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::SWITCHER,
-                'label_on'  => __( 'Yes', 'addonskit-for-elementor' ),
-                'label_off' => __( 'No', 'addonskit-for-elementor' ),
+                'label_on'  => __( 'Enable', 'addonskit-for-elementor' ),
+                'label_off' => __( 'Disable', 'addonskit-for-elementor' ),
                 'default'   => 'no',
             ]
         );
 
+        $this->add_responsive_control(
+			'category_align',
+			[
+				'label'     => esc_html__( 'Categories Alignment', 'addonskit-for-elementor' ),
+				'type'      => Controls_Manager::CHOOSE,
+				'options'   => [
+					'start'  => [
+						'title' => esc_html__( 'Left', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-text-align-center',
+					],
+					'end'    => [
+						'title' => esc_html__( 'Right', 'addonskit-for-elementor' ),
+						'icon'  => 'eicon-text-align-right',
+					],
+				],
+				'default'   => '',
+				'selectors' => [
+                    '{{WRAPPER}} .directorist-listing-category-top ul'  => 'justify-content: {{VALUE}}',
+				],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
+			]
+		);
+
         $this->add_control(
             'user',
             [
-                'label'     => __( 'Show only for logged in user?', 'addonskit-for-elementor' ),
+                'label'     => __( 'Enable Authentication', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::SWITCHER,
                 'label_on'  => __( 'Yes', 'addonskit-for-elementor' ),
                 'label_off' => __( 'No', 'addonskit-for-elementor' ),
@@ -273,9 +370,9 @@ class SearchListing extends Widget_Base {
     }
 
     protected function register_styles(): void {
-        $this->register_text_controls( __( 'Title', 'addonskit-for-elementor' ), 'title', '.directorist-search-top__title' );
-        $this->register_text_controls( __( 'Subtitle', 'addonskit-for-elementor' ), 'subtitle', '.directorist-search-top__subtitle' );
-        $this->register_directory_type_style_controls( '.directorist-listing-type-selection__item a', [], '.directorist-listing-type-selection__item a.directorist-listing-type-selection__link--current' );
+        $this->register_text_controls( __( 'Title', 'addonskit-for-elementor' ), 'title', '.directorist-search-top__title', ['show_subtitle' => [ 'yes' ]] );
+        $this->register_text_controls( __( 'Subtitle', 'addonskit-for-elementor' ), 'subtitle', '.directorist-search-top__subtitle', ['show_subtitle' => [ 'yes' ]] );
+        $this->register_directory_type_style_controls( '.directorist-listing-type-selection__item a', [], '.directorist-listing-type-selection__item .directorist-listing-type-selection__link--current' );
         $this->register_form_container_style_controls( __( 'Form Container', 'addonskit-for-elementor' ), 'search-form-container', '.directorist-search-form__box' );
         $this->register_form_fields_controls();
         $this->register_form_button_style_controls();
@@ -297,12 +394,11 @@ class SearchListing extends Widget_Base {
             'apply_filters_button' => $settings['more_filter_search_btn'],
             'reset_filters_text'   => $settings['more_filter_reset_btn_text'],
             'apply_filters_text'   => $settings['more_filter_search_btn_text'],
-            'more_filters_display' => $settings['more_filter'],
             'show_popular_category' => $settings['show_popular_category'],
             'logged_in_user_only'  => $settings['user'] ?? 'no',
         ];
 
-        if ( DirectoristHelper::directorist_multi_directory() ) {
+        if ( directorist_is_multi_directory_enabled() ) {
             if ( is_array( $type ) ) {
                 $atts['directory_type'] = implode( ',', $type );
             }

@@ -49,7 +49,8 @@ class RelatedListings extends Widget_Base {
     }
 
     public function show_in_panel() {
-        return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+        return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
     }
 
     public function get_script_depends() {
@@ -74,16 +75,13 @@ class RelatedListings extends Widget_Base {
             'important_note',
             [
                 'type' => Controls_Manager::RAW_HTML,
-                'raw'  => __(
-                    '<div id="elementor-panel-elements-notice-area">
+                'raw'  => '<div id="elementor-panel-elements-notice-area">
 								<div id="elementor-panel-notice-wrapper">
 									<div class="elementor-panel-notice elementor-panel-alert elementor-panel-info-info">
-										<strong>This widget will display similar listings on a slider.</strong>
+										<strong>'. esc_html__( 'This widget will display similar listings on a slider.', 'addonskit-for-elementor' ) . '</strong>
 									</div>
 								</div>
 							</div>',
-                    'addonskit-for-elementor'
-                ),
             ]
         );
 
@@ -111,6 +109,6 @@ class RelatedListings extends Widget_Base {
             $this->get_script_depends();
         }
 
-        DirectoristHelper::get_single_listing_other_fields( $args, get_the_ID() );
+        DirectoristHelper::get_single_listing_other_fields( $args );
     }
 }

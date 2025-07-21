@@ -27,9 +27,9 @@ trait DirectoryTypeStyles {
         $this->start_controls_section(
             'section_directory_type_style',
             [
-                'label'     => esc_html__( 'Directory: Types', 'addonskit-for-elementor' ),
+                'label'     => esc_html__( 'Type: Settings', 'addonskit-for-elementor' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
-                'condition' => DirectoristHelper::directorist_multi_directory() ? '' : ['nocondition' => true],
+                'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
             ]
         );
 
@@ -54,7 +54,6 @@ trait DirectoryTypeStyles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector} .directorist-icon-mask::after" => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -66,7 +65,6 @@ trait DirectoryTypeStyles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector} .directorist-icon-mask" => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'after',
             ]
         );
 
@@ -212,6 +210,7 @@ trait DirectoryTypeStyles {
                 'size_units' => ['px', '%', 'em', 'rem', 'custom'],
                 'selectors'  => [
                     "{{WRAPPER}} {$active}" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    "{{WRAPPER}} .directorist-listing-type-selection__item a:after" => 'background-color: transparent;',
                 ],
             ]
         );
@@ -296,7 +295,6 @@ trait DirectoryTypeStyles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'before',
                 'condition'  => $args['section_condition'],
             ]
         );

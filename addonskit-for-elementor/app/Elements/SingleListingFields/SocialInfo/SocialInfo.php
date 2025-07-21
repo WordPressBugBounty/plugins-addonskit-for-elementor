@@ -43,7 +43,8 @@ class SocialInfo extends Widget_Base {
     }
 
     public function show_in_panel() {
-        return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+        return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
     }
 
     protected function register_controls(): void {
@@ -64,16 +65,13 @@ class SocialInfo extends Widget_Base {
             'important_note',
             [
                 'type' => Controls_Manager::RAW_HTML,
-                'raw'  => __(
-                    '<div id="elementor-panel-elements-notice-area">
+                'raw'  => '<div id="elementor-panel-elements-notice-area">
 								<div id="elementor-panel-notice-wrapper">
 									<div class="elementor-panel-notice elementor-panel-alert elementor-panel-info-info">
-										<strong>This widget will show the listing social icons.</strong>
+										<strong>'. esc_html__( 'This widget will show the listing social icons.', 'addonskit-for-elementor' ) . '</strong>
 									</div>
 								</div>
 							</div>',
-                    'addonskit-for-elementor'
-                ),
             ]
         );
 

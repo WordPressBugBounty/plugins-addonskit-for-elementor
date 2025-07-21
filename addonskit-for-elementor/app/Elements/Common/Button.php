@@ -63,6 +63,7 @@ trait Button {
 			[
 				'name'     => "{$prefix}_background_normal",
 				'selector' => "{{WRAPPER}} {$selector}",
+				'exclude'  => ['image'],
 			]
 		);
 
@@ -122,6 +123,7 @@ trait Button {
 			[
 				'name'     => "{$prefix}_background_active",
 				'selector' => "{{WRAPPER}} {$active}",
+				'exclude'  => ['image'],
 			]
 		);
 
@@ -180,6 +182,7 @@ trait Button {
 			[
 				'name'     => "{$prefix}_background_hover",
 				'selector' => "{{WRAPPER}} {$selector}:hover, {{WRAPPER}} {$selector}:focus",
+				'exclude'  => ['image'],
 			]
 		);
 		$this->add_group_control(
@@ -222,6 +225,19 @@ trait Button {
 				'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
 				'selectors'  => [
 					"{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator'  => 'before',
+			]
+		);
+		
+		$this->add_responsive_control(
+			"{$prefix}_text_margin",
+			[
+				'label'      => esc_html__( 'Margin', 'addonskit-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
+				'selectors'  => [
+					"{{WRAPPER}} {$selector}" => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'separator'  => 'before',
 			]
@@ -283,6 +299,7 @@ trait Button {
 			[
 				'name'     => "{$prefix}_background_normal",
 				'selector' => "{{WRAPPER}} {$selector}",
+				'exclude'  => ['image'],
 			]
 		);
 
@@ -341,6 +358,7 @@ trait Button {
 			[
 				'name'     => "{$prefix}_background_hover",
 				'selector' => "{{WRAPPER}} {$selector}:hover, {{WRAPPER}} {$selector}:focus",
+				'exclude'  => ['image'],
 			]
 		);
 		$this->add_group_control(
@@ -387,75 +405,6 @@ trait Button {
 				'separator'  => 'before',
 			]
 		);
-
-		$this->end_controls_section();
-	}
-
-	protected function register_button2_style_old( $class, $icon ): void {
-
-		$this->start_controls_section(
-			'section_buttons_style',
-			[
-				'label' => __( 'Button Style', 'addonskit-for-elementor' ),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
-		$this->start_controls_tabs( 'button_tabs' );
-
-		// Hover State Tab
-		$this->start_controls_tab( 'button_normal', ['label' => __( 'Normal', 'addonskit-for-elementor' )] );
-		$this->add_control(
-			'button_color',
-			[
-				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					"{{WRAPPER}} {$class}" => 'color: {{VALUE}};',
-					"{{WRAPPER}} {$icon}"  => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color',
-			[
-				'label'     => __( 'Background', 'addonskit-for-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					"{{WRAPPER}} {$class}" => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		// Hover State Tab
-		$this->start_controls_tab( 'button_hover', ['label' => __( 'Hover', 'addonskit-for-elementor' )] );
-		$this->add_control(
-			'button_color_hover',
-			[
-				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					"{{WRAPPER}} {$class}:hover"          => 'color: {{VALUE}};',
-					"{{WRAPPER}} {$class}:hover i::after" => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_color_bg_hover',
-			[
-				'label'     => __( 'Background', 'addonskit-for-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => [
-					"{{WRAPPER}} {$class}:hover" => 'background-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 	}

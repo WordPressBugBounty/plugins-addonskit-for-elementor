@@ -3,7 +3,7 @@ Contributors: wpwax
 Tags: addons kit, elementor widget, directory, templates, directory websites  
 Requires at least: 6.0  
 Tested up to: 6.8
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 Requires PHP: 7.4  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
@@ -43,7 +43,15 @@ Works seamlessly with Directorist-compatible themes, including [Pixetiq](https:/
 3. Access widgets and templates in the Elementor editor to start customizing your directory website.
 
 = Support and Updates =  
-Regular updates and premium support ensure a smooth experience with Directorist AddonsKit for Elementor.  
+Regular updates and premium support ensure a smooth experience with Directorist AddonsKit for Elementor.
+
+== Changelog ==
+
+= 1.2.0 - Jul 21, 2025 =
+* Added  : Style function on Sign In * Sign Up widget
+* Improve: Style function on all widgets
+* Fixed  : Single listing widgets issue
+* Fixed  : Some security issue
 
 == Changelog ==
 

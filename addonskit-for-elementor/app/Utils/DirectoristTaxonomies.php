@@ -53,4 +53,22 @@ class DirectoristTaxonomies {
 
         return $listing_types;
     }
+
+    public static function all_listings(): array {
+        $result = [];
+        $args = [
+            'post_type'      => ATBDP_POST_TYPE,
+            'post_status'    => 'publish',
+            'posts_per_page' => -1,
+        ];
+
+        $listings = get_posts($args);
+
+        foreach ($listings as $listing) {
+            $result[$listing->ID] = $listing->post_title;
+        }
+
+        return $result;
+    }
+
 }

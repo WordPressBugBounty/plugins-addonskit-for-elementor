@@ -16,13 +16,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 trait Styles {
     protected function register_review_button_style(): void {
 
-        $class = '.directorist-review-content__header .directorist-btn-primary';
+        $class = '.directorist-card__header .directorist-btn';
         $icon  = "{$class} .directorist-icon-mask:after";
 
         $this->start_controls_section(
             'section_review_buttons_style',
             [
-                'label' => __( 'Review: Button Style', 'addonskit-for-elementor' ),
+                'label' => __( 'Add Review: Button Style', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -90,12 +90,12 @@ trait Styles {
 
     protected function register_submit_button_style(): void {
 
-        $class = '.directorist-review-submit .directorist-btn-primary';
+        $class = '.directorist-review-submit button.directorist-btn';
 
         $this->start_controls_section(
             'section_review_form_buttons_style',
             [
-                'label' => __( 'Submit: Button Style', 'addonskit-for-elementor' ),
+                'label' => __( 'Submit Review: Button Style', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );

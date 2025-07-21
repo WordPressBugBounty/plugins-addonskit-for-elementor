@@ -69,7 +69,7 @@ class AllCategories extends Widget_Base {
 				'type'      => Controls_Manager::SELECT2,
 				'multiple'  => true,
 				'options'   => DirectoristTaxonomies::directory_types(),
-				'condition' => DirectoristHelper::directorist_multi_directory() ? '' : ['nocondition' => true],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
 				'separator' => 'before',
 			]
 		);
@@ -81,7 +81,7 @@ class AllCategories extends Widget_Base {
 				'type'      => Controls_Manager::SELECT,
 				'multiple'  => true,
 				'options'   => DirectoristTaxonomies::directory_types(),
-				'condition' => DirectoristHelper::directorist_multi_directory() ? '' : ['nocondition' => true],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
 			]
 		);
 
@@ -164,13 +164,14 @@ class AllCategories extends Widget_Base {
 		$this->add_control(
 			'number_cat',
 			[
-				'label'     => __( 'Number of Categories to Show', 'addonskit-for-elementor' ),
-				'type'      => Controls_Manager::NUMBER,
-				'min'       => 1,
-				'max'       => 100,
-				'step'      => 1,
-				'default'   => 6,
-				'separator' => 'before',
+				'label'       => __( 'Number of Categories to Show', 'addonskit-for-elementor' ),
+				'type'        => Controls_Manager::NUMBER,
+				'min'         => -1,
+				'max'         => 100,
+				'step'        => 1,
+				'default'     => 6,
+				'separator'   => 'before',
+				'description' => __( 'Set -1 to display all categories', 'addonskit-for-elementor' ),
 			]
 		);
 
@@ -191,10 +192,10 @@ class AllCategories extends Widget_Base {
 
 	protected function register_styles(): void {
 
-		if ( DirectoristHelper::directorist_multi_directory() ) {
+		if ( directorist_is_multi_directory_enabled() ) {
 
 			$this->register_container_style_controls(
-				__( 'Directory Type: Container', 'addonskit-for-elementor' ),
+				__( 'Type: Container', 'addonskit-for-elementor' ),
 				'directory_type_area',
 				'.directorist-type-nav__list',
 			);
@@ -234,7 +235,7 @@ class AllCategories extends Widget_Base {
 			'slug'                => $slug ? implode( ',', $slug ) : '',
 		];
 
-		if ( DirectoristHelper::directorist_multi_directory() ) {
+		if ( directorist_is_multi_directory_enabled() ) {
 			if ( is_array( $type ) ) {
 				$atts['directory_type'] = implode( ',', $type );
 			}

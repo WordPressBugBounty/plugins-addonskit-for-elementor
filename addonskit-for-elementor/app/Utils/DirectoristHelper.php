@@ -222,7 +222,7 @@ class DirectoristHelper {
 			return;
 		}
 
-		$single = Directorist_Single_Listing::instance( get_the_ID() );
+		$single = Directorist_Single_Listing::instance( 30 );
 		$data   = $contents['fields'][$widget_name];
 
 		switch ( $data['widget_key'] ) {
@@ -251,25 +251,21 @@ class DirectoristHelper {
 	}
 
 	public static function get_single_listing_other_fields( $args = '' ) {
-
 		if ( empty( $args ) ) {
 			return;
 		}
 
-		$single = Directorist_Single_Listing::instance( get_the_ID() );
-
 		echo wp_kses_post('<div class="directorist-single-wrapper">');
-		$single->section_template( $args );
+		$args['listing']->section_template( $args );
 		echo wp_kses_post('</div>');
 	}
 
 	public static function get_single_listing_info( $widget_name = '' ) {
-
 		if ( empty( $widget_name ) ) {
 			return;
 		}
 
-		$single  = Directorist_Single_Listing::instance( get_the_ID() );
+		$single  = Directorist_Single_Listing::instance( 30 );
 		$widgets = self::get_builder_data()['single_listing_header']['widgets'];
 		$args    = [];
 
@@ -287,6 +283,7 @@ class DirectoristHelper {
 			}
 		}
 		unset( $args['options'] );
+		
 		echo wp_kses_post($single->field_template( $args ));
 	}
 
@@ -294,12 +291,12 @@ class DirectoristHelper {
 
 		$fields      = [];
 		$data        = self::get_builder_data()['single_listing_header']['layout'];
-		$except_data = ['price', 'category', 'location'];
+		// $except_data = ['price', 'category', 'location'];
 
 		foreach ( $data as $args ) {
 			if ( $placeholderKey === $args['placeholderKey'] ) {
-				$accepted_fields = $args['acceptedWidgets'];
-				$fields          = array_diff( $accepted_fields, $except_data );
+				$fields = $args['acceptedWidgets'];
+				// $fields          = array_diff( $accepted_fields, $except_data );
 			}
 		}
 
@@ -324,10 +321,13 @@ class DirectoristHelper {
 		return $action_items;
 	}
 
-	public static function directorist_multi_directory() {
-		$types = is_array(\directory_types()) && ! empty( \directory_types()) ? count( \directory_types() ) : '';
+	public static function top_search() {
+		$top_search = get_directorist_option( 'listing_hide_top_search_bar', false );
 
-		return \directorist_multi_directory() && ( 1 < $types ) ? true : false;
+		if ( $top_search ) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-
 }

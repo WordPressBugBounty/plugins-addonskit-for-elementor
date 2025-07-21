@@ -21,14 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 trait Styles {
-	protected function register_add_listing_directory_controls(): void {
+	protected function register_add_listing_directory_controls( $selector = '' ): void {
 
 		$this->start_controls_section(
 			'section_directory_style',
 			[
-				'label'     => __( 'Directory: Types', 'addonskit-for-elementor' ),
+				'label'     => __( 'Directory Type: Settings', 'addonskit-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
-				'condition' => DirectoristHelper::directorist_multi_directory() ? '' : ['nocondition' => true],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
 			]
 		);
 
@@ -51,7 +51,7 @@ trait Styles {
 					],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link .directorist-icon-mask:after' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
+					"{{WRAPPER}} {$selector} .directorist-icon-mask:after" => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
 				],
 				'separator'  => 'before',
 			]
@@ -61,7 +61,7 @@ trait Styles {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => 'directory_title_typography',
-				'selector' => '{{WRAPPER}} .directorist-add-listing-types__single__link',
+				'selector' => "{{WRAPPER}} {$selector}",
 			]
 		);
 
@@ -72,7 +72,7 @@ trait Styles {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"{{WRAPPER}} {$selector}" => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'separator'  => 'before',
 			]
@@ -85,7 +85,7 @@ trait Styles {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em', '%'],
 				'selectors'  => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					"{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -95,13 +95,41 @@ trait Styles {
 		// Normal State Tab
 		$this->start_controls_tab( 'directory_header_normal', ['label' => __( 'Normal', 'addonskit-for-elementor' )] );
 
+		$this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'directory_type_border_normal',
+                'selector' => "{{WRAPPER}} {$selector}",
+            ]
+        );
+
+        $this->add_responsive_control(
+            'directory_type_border_radius_normal',
+            [
+                'label'      => esc_html__( 'Border Radius', 'addonskit-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors'  => [
+                    "{{WRAPPER}} {$selector}" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'directory_type_button_box_shadow_normal',
+                'selector' => "{{WRAPPER}} {$selector}",
+            ]
+        );
+
 		$this->add_control(
 			'directory_text_color',
 			[
 				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link' => 'color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}" => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -112,7 +140,7 @@ trait Styles {
 				'label'     => __( 'Background Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -123,7 +151,7 @@ trait Styles {
 				'label'     => __( 'Icon Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link .directorist-icon-mask:after' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector} .directorist-icon-mask:after" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -134,7 +162,7 @@ trait Styles {
 				'label'     => __( 'Icon Background', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link .directorist-icon-mask' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector} .directorist-icon-mask" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -144,13 +172,41 @@ trait Styles {
 		// Hover State Tab
 		$this->start_controls_tab( 'directory_header_hover', ['label' => __( 'Hover', 'addonskit-for-elementor' )] );
 
+		$this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'directory_type_border_hover',
+                'selector' => "{{WRAPPER}} {$selector}:hover",
+            ]
+        );
+
+        $this->add_responsive_control(
+            'directory_type_border_radius_hover',
+            [
+                'label'      => esc_html__( 'Border Radius', 'addonskit-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors'  => [
+                    "{{WRAPPER}} {$selector}:hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => 'directory_type_button_box_shadow_hover',
+                'selector' => "{{WRAPPER}} {$selector}:hover",
+            ]
+        );
+
 		$this->add_control(
 			'directory_text_color_hover',
 			[
 				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link:hover' => 'color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}:hover" => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -161,7 +217,7 @@ trait Styles {
 				'label'     => __( 'Background', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link:hover' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}:hover" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -172,7 +228,7 @@ trait Styles {
 				'label'     => __( 'Icon', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link:hover .directorist-icon-mask:after' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}:hover .directorist-icon-mask:after" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -183,7 +239,7 @@ trait Styles {
 				'label'     => __( 'Icon Background', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .directorist-add-listing-types__single__link:hover .directorist-icon-mask' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}:hover .directorist-icon-mask" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -200,7 +256,7 @@ trait Styles {
 		$this->start_controls_section(
 			'section_enable_multi_dir',
 			[
-				'label' => __( 'Form View', 'addonskit-for-elementor' ),
+				'label' => __( 'Listing Form: Settings', 'addonskit-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -208,10 +264,10 @@ trait Styles {
 		$this->add_control(
 			'disable_multi_directory',
 			[
-				'label'     => __( '<b>Enable</b>', 'addonskit-for-elementor' ),
+				'label'     => '<b>' . __( 'Enable Settings', 'addonskit-for-elementor' ) . '</b>',
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'no',
-				'condition' => DirectoristHelper::directorist_multi_directory() ? '' : ['nocondition' => true],
+				'condition' => directorist_is_multi_directory_enabled() ? '' : ['nocondition' => true],
 			]
 		);
 
@@ -302,12 +358,12 @@ trait Styles {
 		$this->end_controls_section();
 	}
 
-	protected function register_add_listing_steps_controls(): void {
+	protected function register_add_listing_sidebar_controls( $selector = '' ): void {
 
 		$this->start_controls_section(
 			'section_steps_style',
 			[
-				'label' => __( 'Form: Steps', 'addonskit-for-elementor' ),
+				'label' => __( 'Form: Sidebar', 'addonskit-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => [
 					'disable_multi_directory' => 'yes',
@@ -319,26 +375,7 @@ trait Styles {
 			Group_Control_Typography::get_type(),
 			[
 				'name'     => "steps_typography",
-				'selector' => "{{WRAPPER}} .multistep-wizard__nav__btn",
-			]
-		);
-
-		$this->add_responsive_control(
-			'steps_menu_item_gap',
-			[
-				'label'      => __( 'Menu Item Gap', 'addonskit-for-elementor' ),
-				'type'       => Controls_Manager::SLIDER,
-				'size_units' => ['px'],
-				'range'      => [
-					'px' => [
-						'min'  => 0,
-						'max'  => 40,
-						'step' => 1,
-					],
-				],
-				'selectors'  => [
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-				],
+				'selector' => "{{WRAPPER}} {$selector}",
 			]
 		);
 
@@ -352,8 +389,8 @@ trait Styles {
 				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .multistep-wizard__nav__btn'         => 'color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard__nav__btn i:after' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}"         => 'color: {{VALUE}};',
+					"{{WRAPPER}} {$selector} i:after" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -364,8 +401,37 @@ trait Styles {
 				'label'     => __( 'Background', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .multistep-wizard__nav__btn' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} {$selector}" => 'background-color: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => "steps_menu_button_border",
+				'selector'  => "{{WRAPPER}} {$selector}",
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			"steps_menu_button_border_radius",
+			[
+				'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+				'selectors'  => [
+					"{{WRAPPER}} {$selector}" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => "steps_menu_button_border_box_shadow",
+				'selector' => "{{WRAPPER}} {$selector}",
 			]
 		);
 
@@ -379,12 +445,12 @@ trait Styles {
 				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover'          => 'color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover:before'   => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover i:after'  => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn.active'         => 'color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn.active:before'  => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn.active i:after' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover"          => 'color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover:before"   => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover i:after"  => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}.active"         => 'color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}.active:before"  => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}.active i:after" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -395,9 +461,38 @@ trait Styles {
 				'label'     => __( 'Background', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover'  => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn.active' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover"  => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}.active" => 'background-color: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => "steps_menu_button_border_active",
+				'selector'  => "{{WRAPPER}} {$selector}",
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			"steps_menu_button_border_active_radius",
+			[
+				'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+				'selectors'  => [
+					"{{WRAPPER}} {$selector}" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => "steps_menu_button_border_active_box_shadow",
+				'selector' => "{{WRAPPER}} {$selector}",
 			]
 		);
 
@@ -411,9 +506,9 @@ trait Styles {
 				'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover'         => 'color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover:before'  => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover i:after' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover"         => 'color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover:before"  => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover i:after" => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -424,8 +519,37 @@ trait Styles {
 				'label'     => __( 'Background', 'addonskit-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .multistep-wizard .multistep-wizard__nav a.multistep-wizard__nav__btn:hover' => 'background-color: {{VALUE}};',
+					"{{WRAPPER}} .multistep-wizard .multistep-wizard__nav {$selector}:hover" => 'background-color: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => "steps_menu_button_border_hover",
+				'selector'  => "{{WRAPPER}} {$selector}:hover",
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			"steps_menu_button_border_hover_radius",
+			[
+				'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+				'selectors'  => [
+					"{{WRAPPER}} {$selector}:hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => "steps_menu_button_border_hover_box_shadow",
+				'selector' => "{{WRAPPER}} {$selector}:hover",
 			]
 		);
 
@@ -685,7 +809,7 @@ trait Styles {
 		$this->start_controls_section(
 			'section_buttons_style',
 			[
-				'label' => __( 'Form: Buttons', 'addonskit-for-elementor' ),
+				'label' => __( 'Form: Save & Preview Button', 'addonskit-for-elementor' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => [
 					'disable_multi_directory' => 'yes',
@@ -719,6 +843,35 @@ trait Styles {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => "button_border",
+				'selector'  => "{{WRAPPER}} {$selector}",
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			"button_border_radius",
+			[
+				'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+				'selectors'  => [
+					"{{WRAPPER}} {$selector}" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => "button_border_box_shadow",
+				'selector' => "{{WRAPPER}} {$selector}",
+			]
+		);
+
 		$this->end_controls_tab();
 
 		// Hover State Tab
@@ -742,6 +895,35 @@ trait Styles {
 				'selectors' => [
 					"{{WRAPPER}} $selector:hover" => 'background-color: {{VALUE}}; border-color: {{VALUE}};',
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name'      => "button_border_hover",
+				'selector'  => "{{WRAPPER}} {$selector}:hover",
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			"button_border_radius_hover",
+			[
+				'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+				'selectors'  => [
+					"{{WRAPPER}} {$selector}:hover" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'     => "button_border_box_shadow_hover",
+				'selector' => "{{WRAPPER}} {$selector}:hover",
 			]
 		);
 

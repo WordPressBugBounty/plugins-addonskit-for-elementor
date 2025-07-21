@@ -30,7 +30,7 @@ trait Styles {
         $this->start_controls_section(
             'section_author_image_style',
             [
-                'label' => esc_html__( 'Profile: Info', 'addonskit-for-elementor' ),
+                'label' => esc_html__( 'Header: Image & Text', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -119,7 +119,7 @@ trait Styles {
         $this->start_controls_section(
             'section_author_title_description_style',
             [
-                'label' => esc_html__( 'About: Title & Description', 'addonskit-for-elementor' ),
+                'label' => esc_html__( 'About: Container', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -138,7 +138,7 @@ trait Styles {
         $this->start_controls_section(
             "section_{$prefix}_style",
             [
-                'label' => __( 'Contact Info: Contact List', 'addonskit-for-elementor' ),
+                'label' => __( 'Contact Info: Text', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -410,27 +410,10 @@ trait Styles {
         );
 
         $this->add_control(
-            "{$prefix}_icon_color",
-            [
-                'label'     => esc_html__( 'Color', 'addonskit-for-elementor' ),
-                'type'      => Controls_Manager::SELECT,
-                'default'   => 'default',
-                'options'   => [
-                    'default' => esc_html__( 'Default Color', 'addonskit-for-elementor' ),
-                    'custom'  => esc_html__( 'Custom', 'addonskit-for-elementor' ),
-                ],
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
             "{$prefix}__primary_color",
             [
-                'label'     => esc_html__( 'Primary Color', 'addonskit-for-elementor' ),
+                'label'     => esc_html__( 'Icon BG Color', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
-                'condition' => [
-                    "{$prefix}_icon_color" => 'custom',
-                ],
                 'selectors' => [
                     "{{WRAPPER}} {$selector} i.directorist-icon-mask" => 'background-color: {{VALUE}};',
                 ],
@@ -440,11 +423,8 @@ trait Styles {
         $this->add_control(
             "{$prefix}_secondary_color",
             [
-                'label'     => esc_html__( 'Secondary Color', 'addonskit-for-elementor' ),
+                'label'     => esc_html__( 'Icon Color', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
-                'condition' => [
-                    "{$prefix}_icon_color" => 'custom',
-                ],
                 'selectors' => [
                     "{{WRAPPER}} {$selector} i.directorist-icon-mask:after" => 'background-color: {{VALUE}};',
                 ],
@@ -454,7 +434,7 @@ trait Styles {
         $this->add_responsive_control(
             "{$prefix}__size",
             [
-                'label'      => esc_html__( 'Size', 'addonskit-for-elementor' ),
+                'label'      => esc_html__( 'Icon Size', 'addonskit-for-elementor' ),
                 'type'       => Controls_Manager::SLIDER,
                 // The `%' and `em` units are not supported as the widget implements icons differently then other icons.
                 'size_units' => ['px', 'rem', 'vw', 'custom'],
@@ -466,53 +446,6 @@ trait Styles {
                 ],
                 'selectors'  => [
                     "{{WRAPPER}} {$selector} .directorist-icon-mask:after" => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            "{$prefix}__padding",
-            [
-                'label'          => esc_html__( 'Padding', 'addonskit-for-elementor' ),
-                'type'           => Controls_Manager::SLIDER,
-                'selectors'      => [
-                    "{{WRAPPER}} {$selector} i" => 'padding: {{SIZE}}{{UNIT}}',
-                ],
-                'default'        => [
-                    'unit' => 'em',
-                ],
-                'tablet_default' => [
-                    'unit' => 'em',
-                ],
-                'mobile_default' => [
-                    'unit' => 'em',
-                ],
-                'range'          => [
-                    'em' => [
-                        'min' => 0,
-                        'max' => 5,
-                    ],
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name'      => "{$prefix}_border", // We know this mistake - TODO: 'icon_border' (for hover control condition also)
-                'selector'  => "{{WRAPPER}} {$selector}",
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_responsive_control(
-            "{$prefix}_radius",
-            [
-                'label'      => esc_html__( 'Border Radius', 'addonskit-for-elementor' ),
-                'type'       => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-                'selectors'  => [
-                    "{{WRAPPER}} {$selector}" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

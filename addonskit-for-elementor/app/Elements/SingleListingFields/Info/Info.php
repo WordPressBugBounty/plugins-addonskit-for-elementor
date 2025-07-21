@@ -42,12 +42,13 @@ class Info extends Widget_Base {
 	}
 
 	public function show_in_panel() {
-		return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+		return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
 	}
 
 	protected function register_controls(): void {
 		$this->register_contents();
-		$this->register_styles();
+		$this->register_info_style();
 	}
 
 	protected function register_contents(): void {
@@ -97,10 +98,6 @@ class Info extends Widget_Base {
 		);
 
 		$this->end_controls_section();
-	}
-
-	protected function register_styles(): void {
-		$this->register_info_style();
 	}
 
 	public function render(): void {

@@ -41,7 +41,8 @@ class EditAction extends Widget_Base {
     }
 
     public function show_in_panel() {
-        return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+        return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
     }
 
     protected function register_controls(): void {
@@ -61,16 +62,13 @@ class EditAction extends Widget_Base {
             'important_note',
             [
                 'type' => Controls_Manager::RAW_HTML,
-                'raw'  => __(
-                    '<div id="elementor-panel-elements-notice-area">
+                'raw'  => '<div id="elementor-panel-elements-notice-area">
 								<div id="elementor-panel-notice-wrapper">
 									<div class="elementor-panel-notice elementor-panel-alert elementor-panel-info-info">
-										<strong>This widget will display <span style="color: green;">Back, Edit, Continue</span> actions for the listing author on a single listing.</strong>
+										<strong>'. esc_html__( 'This widget will display <span style="color: green;">Back, Edit, Continue</span> actions for the listing author on a single listing.', 'addonskit-for-elementor' ) . '</strong>
 									</div>
 								</div>
 							</div>',
-                    'addonskit-for-elementor'
-                ),
             ]
         );
 
@@ -119,7 +117,7 @@ class EditAction extends Widget_Base {
     }
 
     protected function register_styles(): void {
-        $this->register_button2_style( __( 'Action Style', 'addonskit-for-elementor' ), 'action_style', '.directorist-signle-listing-top__btn-continue.directorist-btn' );
+        $this->register_button2_style( __( 'Style', 'addonskit-for-elementor' ), 'action_style', '.directorist-single-listing-top .directorist-btn' );
     }
 
     public function render(): void {

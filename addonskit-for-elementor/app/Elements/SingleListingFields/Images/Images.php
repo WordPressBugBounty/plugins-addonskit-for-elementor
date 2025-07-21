@@ -39,7 +39,8 @@ class Images extends Widget_Base {
     }
 
     public function show_in_panel() {
-        return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+        return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
     }
 
     public function get_script_depends() {
@@ -63,16 +64,13 @@ class Images extends Widget_Base {
             'important_note',
             [
                 'type' => Controls_Manager::RAW_HTML,
-                'raw'  => __(
-                    '<div id="elementor-panel-elements-notice-area">
+                'raw'  => '<div id="elementor-panel-elements-notice-area">
 								<div id="elementor-panel-notice-wrapper">
 									<div class="elementor-panel-notice elementor-panel-alert elementor-panel-info-info">
-										<strong>This widget will show the listing Images on a slider.</strong>
+										<strong>'. esc_html__( 'This widget will show the listing Images on a slider.', 'addonskit-for-elementor' ) . '</strong>
 									</div>
 								</div>
 							</div>',
-                    'addonskit-for-elementor'
-                ),
             ]
         );
 
@@ -85,12 +83,7 @@ class Images extends Widget_Base {
             $this->get_script_depends();
         }
 
-        $single_listing = Directorist_Single_Listing::instance( get_the_ID() );
-        $args           = [
-            'listing' => $single_listing,
-            'data'    => $single_listing->get_slider_data(),
-        ];
-
-        CoreHelper::get_template( 'single/fields/image_upload', $args );
+        $listing = Directorist_Single_Listing::instance( get_the_ID() );
+        CoreHelper::get_template( 'single/slider', ['data' => $listing->get_slider_data()] );
     }
 }

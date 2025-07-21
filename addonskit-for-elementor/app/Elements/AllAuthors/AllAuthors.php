@@ -74,8 +74,8 @@ class AllAuthors extends Widget_Base {
 
     protected function register_styles(): void {
 
-        $this->register_container_style_controls( __( 'Alphabet: Container', 'addonskit-for-elementor' ), 'alphabet_container', '.directorist-authors__nav' );
-        $this->register_button1_style( __( 'Alphabet: Style', 'addonskit-for-elementor' ), 'alphabet_style', '.directorist-authors__nav li a', '.directorist-authors__nav li.active a' );
+        $this->register_container_style_controls( __( 'Header: Container', 'addonskit-for-elementor' ), 'alphabet_container', '.directorist-authors__nav' );
+        $this->register_button1_style( __( 'Header: Style', 'addonskit-for-elementor' ), 'alphabet_style', '.directorist-authors__nav li a', '.directorist-authors__nav li.active a' );
         $this->register_container_style_controls( __( 'Card: Container', 'addonskit-for-elementor' ), 'card_container', '.directorist-authors__card' );
         $this->register_author_image_style_controls();
         $this->register_text_controls( __( 'Card: Author Name', 'addonskit-for-elementor' ), 'author_name', '.directorist-authors__card h2' );

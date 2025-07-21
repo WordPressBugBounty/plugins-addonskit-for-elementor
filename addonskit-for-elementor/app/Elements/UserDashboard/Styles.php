@@ -21,10 +21,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 trait Styles {
     protected function register_dashboard_sidebar( $condition = '' ): void {
 
+        $selector = '{{WRAPPER}} .directorist-tab__nav__item a.directorist-tab__nav__link';
+        $prefix   = 'dashboard_sidebar';
+
         $this->start_controls_section(
             'section_dashboard_sidebar_style',
             [
-                'label' => __( 'Sidebar: Menu', 'addonskit-for-elementor' ),
+                'label' => __( 'Sidebar: Navigation', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => $condition,
             ]
@@ -54,7 +57,6 @@ trait Styles {
             [
                 'label'     => __( 'Menu Items', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 
@@ -85,10 +87,19 @@ trait Styles {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => "{$prefix}_nav_border",
+                'selector'  => "{$selector}",
+            ]
+        );
+
         $this->end_controls_tab();
 
         // Active State Tab
         $this->start_controls_tab( 'menu_active', ['label' => __( 'Active', 'addonskit-for-elementor' )] );
+
         $this->add_control(
             'dashboard_sidebar_menu_color_active',
             [
@@ -109,6 +120,14 @@ trait Styles {
                 'selectors' => [
                     '{{WRAPPER}} .directorist-tab__nav__item a.directorist-tab__nav__active' => 'background-color: {{VALUE}} !important;',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => "{$prefix}_nav_border_active",
+                'selector'  => '{{WRAPPER}} .directorist-tab__nav__item a.directorist-tab__nav__active',
             ]
         );
 
@@ -139,6 +158,14 @@ trait Styles {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => "{$prefix}_nav_border_hover",
+                'selector'  => "{$selector}:hover",
+            ]
+        );
+
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
@@ -148,7 +175,6 @@ trait Styles {
             [
                 'label'     => __( 'Buttons Style', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 
@@ -173,7 +199,7 @@ trait Styles {
                 'label'     => __( 'Background', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .directorist-tab__nav__action .directorist-btn--add-listing' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-tab__nav__action .directorist-btn--add-listing' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -215,7 +241,7 @@ trait Styles {
         $this->start_controls_section(
             'section_top_menu_items_style',
             [
-                'label' => __( 'My Listings Top: Menu Items', 'addonskit-for-elementor' ),
+                'label' => __( 'Listings: Header', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => $condition,
             ]
@@ -237,7 +263,6 @@ trait Styles {
                 'selectors' => [
                     '{{WRAPPER}} .directorist-user-dashboard-tab__nav a' => 'color: {{VALUE}};',
                 ],
-                'separator' => 'before'
             ]
         );
 
@@ -261,7 +286,7 @@ trait Styles {
         $this->start_controls_section(
             'section_top_search_style',
             [
-                'label' => __( 'My Listings Top: Search Form', 'addonskit-for-elementor' ),
+                'label' => __( 'Listings: Header Search Form', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => $condition,
             ]
@@ -276,7 +301,6 @@ trait Styles {
                     '{{WRAPPER}} .directorist-user-dashboard-tab .directorist-user-dashboard-search input::placeholder' => 'color: {{VALUE}};',
                     '{{WRAPPER}} .directorist-user-dashboard-search__icon i::after'                                     => 'background-color: {{VALUE}};',
                 ],
-                'separator' => 'before'
             ]
         );
 
@@ -296,7 +320,6 @@ trait Styles {
             [
                 'name'      => 'search_border',
                 'selector'  => '{{WRAPPER}} .directorist-user-dashboard-tab .directorist-user-dashboard-search input',
-                'separator' => 'before',
             ]
         );
 
@@ -331,7 +354,7 @@ trait Styles {
         $this->start_controls_section(
             'section_my_listing_content_area_style',
             [
-                'label' => __( 'My Listing Content: Container', 'addonskit-for-elementor' ),
+                'label' => __( 'Listings: Container', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => $condition,
             ]
@@ -358,7 +381,6 @@ trait Styles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -369,7 +391,6 @@ trait Styles {
                 'types'     => ['classic', 'gradient'],
                 'exclude'   => ['image'],
                 'selector'  => "{$class}",
-                'separator' => 'before',
             ]
         );
 
@@ -378,7 +399,6 @@ trait Styles {
             [
                 'name'      => 'my_listing_content_area_border',
                 'selector'  => "{{WRAPPER}} {$selector}",
-                'separator' => 'before',
             ]
         );
 
@@ -410,7 +430,7 @@ trait Styles {
         $this->start_controls_section(
             'section_my_listing_info_style',
             [
-                'label' => __( 'My Listing Content: Listing Info', 'addonskit-for-elementor' ),
+                'label' => __( 'Listings: Info', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
                 'condition' => $condition,
             ]
@@ -426,7 +446,6 @@ trait Styles {
                     '{{WRAPPER}} .directorist-user-dashboard-tabcontent .directorist-listing-table .directorist-actions .directorist-btn-more'                                                                  => 'color: {{VALUE}};',
                     '{{WRAPPER}} .directorist-user-dashboard-tabcontent .directorist-listing-table .directorist-listing-table-listing-info__content .directorist-listing-price-range .directorist-price-active' => 'color: {{VALUE}};',
                 ],
-                'separator' => 'before'
             ]
         );
 
@@ -446,7 +465,6 @@ trait Styles {
                 'selectors' => [
                     '{{WRAPPER}} .directorist-user-dashboard-tabcontent .directorist-listing-table .directorist-actions a.directorist-link-btn' => 'color: {{VALUE}};',
                 ],
-                'separator' => 'before'
             ]
         );
 
@@ -474,7 +492,7 @@ trait Styles {
         $this->start_controls_section(
             "section_{$prefix}_style",
             [
-                'label'     => __( 'My Listing: Pagination', 'addonskit-for-elementor' ),
+                'label'     => __( 'Listings: Pagination', 'addonskit-for-elementor' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => $condition,
             ]
@@ -873,7 +891,6 @@ trait Styles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'before',
             ]
         );
 

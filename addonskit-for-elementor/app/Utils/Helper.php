@@ -27,40 +27,6 @@ class Helper {
             is_preview() );
     }
 
-    public static function is_elementor_using_single_listing( $post_id = '' ) {
-
-        $get_template = get_directorist_option( 'single_listing_template' );
-        $template = 'current_theme_template' === $get_template ? true : false;
-
-        if ( $template && ! is_singular( ATBDP_POST_TYPE ) && is_plugin_inactive( 'elementor-pro/elementor-pro.php' ) ) {
-            return;
-        }
-
-        $current_dir = directorist_get_listings_directory_type( $post_id );
-
-        $elementor_library_posts = get_posts(
-            [
-                'post_type' => 'elementor_library',
-                'meta_key' => '_elementor_conditions',
-                'meta_value' => '',
-                'meta_compare' => '!=',
-            ]
-        );
-
-        foreach ( $elementor_library_posts as $elementor_library_post ) {
-            $post_type = get_post_meta( $elementor_library_post->ID, '_elementor_conditions', true );
-            $posts = implode( ',', $post_type );
-
-            if ( strpos( $posts, 'singular/at_biz_dir' ) !== false ) {
-                return true;
-            } elseif ( preg_match( "/\/$current_dir$/", $posts ) ) {
-                return true;
-            } else {
-                return;
-            }
-        }
-    }
-
     public static function get_img( $filename ) {
         $path = "/img/{$filename}";
 

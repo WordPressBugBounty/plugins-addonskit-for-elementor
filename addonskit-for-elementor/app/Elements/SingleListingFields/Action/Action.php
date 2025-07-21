@@ -43,7 +43,8 @@ class Action extends Widget_Base {
     }
 
     public function show_in_panel() {
-        return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
+        return true;
+        // return is_singular( ATBDP_POST_TYPE ) || is_singular( 'elementor_library' );
     }
 
     protected function register_controls(): void {
@@ -101,7 +102,7 @@ class Action extends Widget_Base {
     }
 
     protected function register_styles(): void {
-        $this->register_button2_style( __( 'Action Style', 'addonskit-for-elementor' ), 'action_style', '.directorist-btn.directorist-btn-light' );
+        $this->register_button2_style( __( 'Style', 'addonskit-for-elementor' ), 'action_style', '.directorist-single-listing-quick-action .directorist-btn-light' );
     }
 
     public function render(): void {

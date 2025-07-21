@@ -4,8 +4,9 @@
  * Description: Complete Elementor Widgets for Directorist.
  * Author: wpWax
  * Author URI: https://wpwax.com
- * Version: 1.1.9
- * Elementor tested up to: 3.28.3
+ * Version: 1.2.0
+ * Requires Plugins: directorist, elementor
+ * Elementor tested up to: 3.30
  * License: GPL2
  * Tested up to: 6.8
  * Requires PHP: 7.4
@@ -38,7 +39,7 @@
 defined( 'ABSPATH' ) || exit;
 
 final class AddonskitForElementor {
-	public $version = '1.1.9';
+	private $version = '1.2.0';
 
 	private $min_php = '7.4';
 
@@ -62,8 +63,10 @@ final class AddonskitForElementor {
 			return;
 		}
 
-		if ( ! $this->activated_required_plugins() ) {
+		if ( ATBDP_VERSION < '8.0.0' ) {
+			add_action( 'admin_notices', [$this, 'directorist_required_version_notice'] );
 			return;
+
 		}
 
 		$this->define_constants();
@@ -74,85 +77,20 @@ final class AddonskitForElementor {
 	}
 
 	public function directorist_required_version_notice() {
-			$message = sprintf(
-				esc_html__('The current version of your&nbsp;%1$sDirectorist is not compatible with Directorist Addons Kit for Elementor%2$s. To ensure compatibility and access new features,&nbsp;%1$s update Directorist to version 8.0 or later%2$s.', 'addonskit-for-elementor'),
-				'<strong>',
-				'</strong>'
-			);
+		$message = sprintf(
+			// translators: %1$s: opening strong tag, %2$s: closing strong tag
+			esc_html__('The current version of your&nbsp;%1$sDirectorist is not compatible with Directorist Addons Kit for Elementor%2$s. To ensure compatibility and access new features,&nbsp;%1$s update Directorist to version 8.0 or later%2$s.', 'addonskit-for-elementor'),
+			'<strong>',
+			'</strong>'
+		);
 
-			printf(
-				'<div class="error"><p>%s</p></div>',
-				wp_kses($message, [
-					'strong' => [],
-					'nbsp' => []
-				])
-			);
-		}
-
-	private function activated_required_plugins(): bool {
-
-		if ( ! did_action( 'directorist_loaded' ) ) {
-			add_action( 'admin_notices', [$this, 'directorist_missing_notice'] );
-			return false;
-		}
-
-		if ( ATBDP_VERSION < '8.0.0' ) {
-			add_action( 'admin_notices', [$this, 'directorist_required_version_notice'] );
-			return false;
-
-		}
-
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			add_action( 'admin_notices', [$this, 'elementor_missing_notice'] );
-			return false;
-		}
-
-		return true;
-	}
-
-	public function directorist_missing_notice(): void {
-		if ( ! current_user_can( 'activate_plugins' ) ) {
-			return;
-		}
-
-		$directorist = 'directorist/directorist-base.php';
-
-		if ( $this->is_plugin_installed( $directorist ) ) {
-
-			$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $directorist . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $directorist );
-			$message        = sprintf( __( '%1$sAddonskit for Elementor%2$s requires %1$sDirectorist%2$s plugin to be active. Please activate Directorist to continue.', 'addonskit-for-elementor' ), "<strong>", "</strong>" );
-			$button_text    = __( 'Activate Directorist', 'addonskit-for-elementor' );
-		} else {
-			$activation_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=directorist' ), 'install-plugin_directorist' );
-			$message        = sprintf( __( '%1$sAddonskit for Elementor%2$s requires %1$sDirectorist%2$s plugin to be installed and activated. Please install Directorist to continue.', 'addonskit-for-elementor' ), '<strong>', '</strong>' );
-			$button_text    = __( 'Install Directorist', 'addonskit-for-elementor' );
-		}
-
-		$button = '<p><a href="' . esc_url( $activation_url ) . '" class="button-primary">' . esc_html( $button_text ) . '</a></p>';
-
-		printf( '<div class="error"><p>%1$s</p>%2$s</div>', wp_kses_post( $message ), wp_kses_post( $button ) );
-	}
-
-	public function elementor_missing_notice(): void {
-		if ( ! current_user_can( 'activate_plugins' ) ) {
-			return;
-		}
-
-		$elementor = 'elementor/elementor.php';
-
-		if ( $this->is_plugin_installed( $elementor ) ) {
-			$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $elementor . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $elementor );
-			$message        = sprintf( __( '%1$sAddonskit for Elementor%2$s requires %1$sElementor%2$s plugin to be active. Please activate Elementor to continue.', 'addonskit-for-elementor' ), "<strong>", "</strong>" );
-			$button_text    = __( 'Activate Elementor', 'addonskit-for-elementor' );
-		} else {
-			$activation_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=elementor' ), 'install-plugin_elementor' );
-			$message        = sprintf( __( '%1$sAddonskit for Elementor%2$s requires %1$sElementor%2$s plugin to be installed and activated. Please install Elementor to continue.', 'addonskit-for-elementor' ), '<strong>', '</strong>' );
-			$button_text    = __( 'Install Elementor', 'addonskit-for-elementor' );
-		}
-
-		$button = '<p><a href="' . esc_url( $activation_url ) . '" class="button-primary">' . esc_html( $button_text ) . '</a></p>';
-
-		printf( '<div class="error"><p>%1$s</p>%2$s</div>', wp_kses_post( $message ), wp_kses_post( $button ) );
+		printf(
+			'<div class="error"><p>%s</p></div>',
+			wp_kses($message, [
+				'strong' => [],
+				'nbsp' => []
+			])
+		);
 	}
 
 	public function is_supported_php(): bool {
@@ -170,25 +108,30 @@ final class AddonskitForElementor {
 
 		deactivate_plugins( basename( __FILE__ ) );
 
-		$error = esc_html__( '<h1>An Error Occurred</h1>', 'addonskit-for-elementor' );
+		$error = '<h1>' . esc_html__( 'An Error Occurred', 'addonskit-for-elementor' ) . '</h1>';
+		
+		// translators: %s: PHP version number
 		$error .= sprintf(
 			'%s%s%s',
 			esc_html__( '<h2>Your installed PHP Version is: ', 'addonskit-for-elementor' ),
 			esc_html(PHP_VERSION),
 			'</h2>'
 		);
+
 		$error .= sprintf(
-			'%s%s%s',
-			esc_html__( '<p>The <strong>Wax Elements</strong> plugin requires PHP version <strong>', 'addonskit-for-elementor' ),
-			esc_html($this->min_php),
-			esc_html__( '</strong> or greater', 'addonskit-for-elementor' )
+			// translators: %s: minimum required PHP version
+			'<p>' . esc_html__( 'The Addonskit For Elementor plugin requires PHP version %s or greater.', 'addonskit-for-elementor' ) . '</p>',
+			'<strong>' . esc_html( $this->min_php ) . '</strong>'
 		);
+
 		$error .= sprintf(
-			'%s<a href="%s" target="_blank"><strong>%s</strong></a>%s',
-			esc_html__( '<p>The version of your PHP is ', 'addonskit-for-elementor' ),
-			esc_url('http://php.net/supported-versions.php'),
-			esc_html__( 'unsupported and old', 'addonskit-for-elementor' ),
-			esc_html__( 'You should update your PHP software or contact your host regarding this matter.</p>', 'addonskit-for-elementor' )
+			'<p>' .
+			// translators: %s: link to PHP supported versions
+			esc_html__( 'The version of your PHP is %s. You should update your PHP software or contact your host regarding this matter.', 'addonskit-for-elementor' ) .
+			'</p>',
+			'<a href="http://php.net/supported-versions.php" target="_blank"><strong>' .
+			esc_html__( 'unsupported and old', 'addonskit-for-elementor' ) .
+			'</strong></a>'
 		);
 
 		wp_die(
@@ -240,7 +183,7 @@ final class AddonskitForElementor {
  *
  * @return AddonskitForElementor the plugin object
  */
-function AddonskitForElementor() {
+function AddonskitForElementor(): void {
 	add_action( 'plugins_loaded', ['AddonskitForElementor', 'init'] );
 }
 

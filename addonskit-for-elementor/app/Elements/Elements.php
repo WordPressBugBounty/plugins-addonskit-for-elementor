@@ -33,13 +33,11 @@ class Elements {
 		$this->action( 'elementor/elements/categories_registered', 'register_category' );
 		add_action( 'elementor/widgets/register', [$this, 'register_widgets'], 20 );
 		add_action( 'elementor/dynamic_tags/register', [$this, 'register_new_dynamic_tags'], 10, 1 );
-		// add_action( 'wp', [$this, 'remove_the_content_filter'] );
-		// add_action( 'init', [$this, 'update_directorist_template'] );
 
 		add_filter( 'directorist_custom_single_listing_pre_page_content', [$this, 'single_listing_elementor_support'], 10, 2 );
 
 		self::$plugin_dir = dirname(  ( new ReflectionClass( $this ) )->getFileName() );
-		
+
 	}
 
 	public function single_listing_elementor_support( $content, $page ) {
@@ -48,20 +46,6 @@ class Elements {
 		}
 	
 		return $content;
-	}
-
-	public function remove_the_content_filter() {
-		//Helper::is_elementor_using_single_listing(get_the_ID());
-		if ( Helper::is_elementor_using_single_listing() ) {
-			$template_hooks_instance = Directorist_Template_Hooks::instance();
-			remove_filter( 'the_content', [$template_hooks_instance, 'single_content'], 20 );
-		}
-	}
-
-	public function update_directorist_template() {
-		if ( Helper::is_elementor_using_single_listing() ) {
-			update_directorist_option( 'single_listing_template', 'current_theme_template' );
-		}
 	}
 
 	/**
@@ -126,7 +110,6 @@ class Elements {
 			'AllLocations',
 			'AuthorProfile',
 			'Checkout',
-			'UserRegistration',
 			'PaymentReceipt',
 			'SearchListing',
 			'SearchResult',
@@ -148,7 +131,6 @@ class Elements {
 	}
 
 	private function general_elements( $widgets_manager ) {
-
 		$directorist_widget_classes = [
 			'Post',
 			'Team',

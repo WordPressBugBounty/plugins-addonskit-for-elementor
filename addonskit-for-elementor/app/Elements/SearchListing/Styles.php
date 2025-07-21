@@ -39,7 +39,6 @@ trait Styles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -72,7 +71,6 @@ trait Styles {
             [
                 'name'      => "{$prefix}_border",
                 'selector'  => "{{WRAPPER}} {$selector}",
-                'separator' => 'before',
             ]
         );
 
@@ -104,7 +102,7 @@ trait Styles {
         $this->start_controls_section(
             "section_form_style",
             [
-                'label' => __( 'Form Fields', 'addonskit-for-elementor' ),
+                'label' => __( 'Search Form: Fields', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -115,16 +113,18 @@ trait Styles {
                 'label'     => esc_html__( 'Text Color', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .directorist-search-modal__contents__body .directorist-search-field.input-is-focused .select2-selection--single .select2-selection__rendered .select2-selection__placeholder' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-search-contents .directorist-search-form-top .directorist-search-field__label' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-search-contents .directorist-search-form-top .directorist-search-field .directorist-form-element::placeholder' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .select2-container--default .select2-selection--single .select2-selection__placeholder' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-search-contents .directorist-search-form-top .directorist-search-field .directorist-btn-ml' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-price-ranges__item .directorist-pf-range' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-checkbox .directorist-checkbox__label' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-form-group .directorist-input-icon .directorist-icon-mask:after' => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-select2-addons-area .directorist-icon-mask:after' => 'background-color: {{VALUE}}',
-                    '{{WRAPPER}} .directorist-search-form-wrap .directorist-search-form-box .directorist-form-group .directorist-form-element::placeholder' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .directorist-search-form__top .directorist-search-basic-dropdown .directorist-search-basic-dropdown-label i:after' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .directorist-search-modal__contents__body .directorist-search-field__btn--clear i::after' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .directorist-search-modal__contents__body .directorist-search-field.input-is-focused .select2-selection--single .select2-selection__rendered .select2-selection__placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-search-contents .directorist-search-form-top .directorist-search-field__label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-search-contents .directorist-search-form-top .directorist-search-field .directorist-form-element::placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .select2-container--default .select2-selection--single .select2-selection__placeholder' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-search-contents .directorist-search-form-top .directorist-search-field .directorist-btn-ml' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-price-ranges__item .directorist-pf-range' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-checkbox .directorist-checkbox__label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-form-group .directorist-input-icon .directorist-icon-mask:after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-select2-addons-area .directorist-icon-mask:after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-search-form-wrap .directorist-search-form-box .directorist-form-group .directorist-form-element::placeholder' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -146,7 +146,7 @@ trait Styles {
         $this->start_controls_section(
             'section_form_search_style',
             [
-                'label' => __( 'Form Button', 'addonskit-for-elementor' ),
+                'label' => __( 'Search Form: Button', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -180,7 +180,7 @@ trait Styles {
                 'label'     => __( 'Background', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .directorist-search-form-action__filter .directorist-filter-btn' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-search-form-action__filter .directorist-filter-btn' => 'background-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'show_more_filter_btn' => 'yes',
@@ -202,6 +202,34 @@ trait Styles {
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => "filter_reset_border",
+                'selector'  => "{{WRAPPER}} .directorist-modal-btn--advanced",
+            ]
+        );
+
+        $this->add_responsive_control(
+            "filter_reset_border_radius",
+            [
+                'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors'  => [
+                    "{{WRAPPER}} .directorist-modal-btn--advanced" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => "filter_reset_border_box_shadow",
+                'selector' => "{{WRAPPER}} .directorist-modal-btn--advanced",
+            ]
+        );
+
         $this->end_controls_tab();
 
         $this->start_controls_tab(
@@ -217,7 +245,7 @@ trait Styles {
                 'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .directorist-search-contents .directorist-btn.directorist-btn-dark' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-btn.directorist-btn-primary' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -228,7 +256,7 @@ trait Styles {
                 'label'     => __( 'Background', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .directorist-search-contents .directorist-btn.directorist-btn-dark' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-btn.directorist-btn-primary' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -239,14 +267,142 @@ trait Styles {
                 'label'     => __( 'Icon', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .directorist-search-contents .directorist-btn.directorist-btn-dark .directorist-icon-mask:after' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .directorist-btn.directorist-btn-primary .directorist-icon-mask:after' => 'background-color: {{VALUE}} !important;',
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => "apply_button_border",
+                'selector'  => "{{WRAPPER}} .directorist-btn-search",
+            ]
+        );
+
+        $this->add_responsive_control(
+            "apply_button_border_radius",
+            [
+                'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors'  => [
+                    "{{WRAPPER}} .directorist-btn-search" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => "apply_button_border_box_shadow",
+                'selector' => "{{WRAPPER}} .directorist-btn-search",
             ]
         );
 
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
+
+        $this->end_controls_section();
+    }
+    
+    protected function register_form_advance_filter_button_style_controls(): void {
+
+        $this->start_controls_section(
+            'section_form_advance_filter_search_style',
+            [
+                'label' => __( 'Advanced Filter: Buttons', 'addonskit-for-elementor' ),
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->start_controls_tabs( "filter_search_buttons_style" );
+
+        $this->start_controls_tab(
+            "apply_button_style",
+            [
+                'label' => esc_html__( 'Apply', 'addonskit-for-elementor' ),
+            ]
+        );
+
+        $this->add_control(
+            'apply_button_color',
+            [
+                'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .directorist-advanced-filter__action .directorist-btn-submit' => 'color: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_more_filter_btn' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'apply_button_ng_color',
+            [
+                'label'     => __( 'Background', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .directorist-advanced-filter__action .directorist-btn-submit' => 'background-color: {{VALUE}} !important;',
+                ],
+                'condition' => [
+                    'show_more_filter_btn' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'      => "advance_filter_reset_border",
+                'selector'  => "{{WRAPPER}} .directorist-advanced-filter__action .directorist-btn-submit",
+            ]
+        );
+
+        $this->add_responsive_control(
+            "advance_apply_button_border_radius",
+            [
+                'label'      => __( 'Border Radius', 'addonskit-for-elementor' ),
+                'type'       => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+                'selectors'  => [
+                    "{{WRAPPER}} .directorist-advanced-filter__action .directorist-btn-submit" => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'     => "advance_apply_button_border_box_shadow",
+                'selector' => "{{WRAPPER}} .directorist-advanced-filter__action .directorist-btn-submit",
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            "filter_search_button",
+            [
+                'label' => esc_html__( 'Reset', 'addonskit-for-elementor' ),
+            ]
+        );
+
+        $this->add_control(
+            'filter_search_color',
+            [
+                'label'     => __( 'Text Color', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .directorist-btn-reset-js' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
 
         $this->end_controls_section();
     }

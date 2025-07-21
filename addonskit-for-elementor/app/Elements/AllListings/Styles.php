@@ -28,7 +28,7 @@ trait Styles {
         $this->start_controls_section(
             'section_view_as_sort_by_style',
             [
-                'label'     => esc_html__( 'Listing Header: Views & Sort', 'addonskit-for-elementor' ),
+                'label'     => esc_html__( 'Listing View As & Sort Button', 'addonskit-for-elementor' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => ['header' => 'yes'],
             ]
@@ -39,6 +39,7 @@ trait Styles {
             [
                 'name'     => 'view_as_sort_by_typography',
                 'selector' => "{{WRAPPER}} {$sort}",
+                'exclude' => ['text_decoration'],
             ]
         );
 
@@ -65,12 +66,25 @@ trait Styles {
             ]
         );
 
+        $this->add_control(
+            'view_as_sort_by_bg_color',
+            [
+                'label'     => esc_html__( 'Background Color', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'global'    => [
+                ],
+                'selectors' => [
+                    "{{WRAPPER}} {$view}" => 'background-color: {{VALUE}} !important;',
+                    "{{WRAPPER}} {$sort}" => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
                 'name'      => 'view_as_sort_by_border',
                 'selector'  => "{{WRAPPER}} {$view}, {{WRAPPER}} {$sort}",
-                'separator' => 'before',
             ]
         );
 
@@ -115,13 +129,25 @@ trait Styles {
                 ],
             ]
         );
+        
+        $this->add_control(
+            'view_as_sort_by_bg_color_active',
+            [
+                'label'     => esc_html__( 'Background Color', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'global'    => [
+                ],
+                'selectors' => [
+                    "{{WRAPPER}} {$view_active}" => 'background-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
 
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
                 'name'      => 'view_as_sort_by_border_active',
                 'selector'  => "{{WRAPPER}} {$view_active}",
-                'separator' => 'before',
             ]
         );
 
@@ -158,7 +184,7 @@ trait Styles {
         $this->start_controls_section(
             'section_listing_info_meta_style',
             [
-                'label' => esc_html__( 'Listing: Footer', 'addonskit-for-elementor' ),
+                'label' => esc_html__( 'Listing: Card Footer', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -195,7 +221,6 @@ trait Styles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector} .directorist-icon-mask::after" => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -205,8 +230,8 @@ trait Styles {
                 'label'     => esc_html__( 'Text Color', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    "{{WRAPPER}} {$selector} .directorist-listing-single__meta__left, {{WRAPPER}} {$selector} .directorist-listing-single__meta__right,{{WRAPPER}} {$selector} .directorist-listing-single__meta__left a, {{WRAPPER}} {$selector} .directorist-listing-single__meta__right a" => 'color: {{VALUE}};',
-
+                    "{{WRAPPER}} {$selector} .directorist-listing-single__meta__left, {{WRAPPER}} {$selector} .directorist-listing-single__meta__right,{{WRAPPER}} {$selector} .directorist-listing-single__meta__left a, {{WRAPPER}} {$selector} .directorist-listing-single__meta__right a,
+                    {{WRAPPER}} {$selector} .directorist-listing-single__meta__left span, {{WRAPPER}} {$selector} .directorist-listing-single__meta__right span" => 'color: {{VALUE}};',
                     "{{WRAPPER}} {$selector} .directorist-icon-mask:after" => 'background-color: {{VALUE}};',
                 ],
             ]
@@ -247,7 +272,7 @@ trait Styles {
         $this->start_controls_section(
             "section_{$prefix}_style",
             [
-                'label'     => __( 'Listing Header: Filters', 'addonskit-for-elementor' ),
+                'label'     => __( 'Filters Button', 'addonskit-for-elementor' ),
                 'tab'       => Controls_Manager::TAB_STYLE,
                 'condition' => $conditions,
             ]
@@ -258,6 +283,7 @@ trait Styles {
             [
                 'name'     => "{$prefix}_typography",
                 'selector' => "{{WRAPPER}} {$selector}",
+                'exclude'  => ['text_decoration'],
             ]
         );
 
@@ -290,7 +316,6 @@ trait Styles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector} .directorist-icon-mask::after" => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}}',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -322,7 +347,7 @@ trait Styles {
                 'label'     => esc_html__( 'Background', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    "{{WRAPPER}} {$selector}" => 'background-color: {{VALUE}};',
+                    "{{WRAPPER}} {$selector}" => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -383,8 +408,8 @@ trait Styles {
                 'label'     => esc_html__( 'Background', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    "{{WRAPPER}} {$selector}:hover" => 'background-color: {{VALUE}};',
-                    "{{WRAPPER}} {$selector}:focus" => 'background-color: {{VALUE}};',
+                    "{{WRAPPER}} {$selector}:hover" => 'background-color: {{VALUE}} !important;',
+                    "{{WRAPPER}} {$selector}:focus" => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -430,7 +455,6 @@ trait Styles {
                 'selectors'  => [
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
-                'separator'  => 'before',
             ]
         );
 
@@ -646,7 +670,7 @@ trait Styles {
         $this->start_controls_section(
             "section{$prefix}_style",
             [
-                'label' => esc_html__( 'Listing: Card Info', 'addonskit-for-elementor' ),
+                'label' => esc_html__( 'Listing: Card Settings', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -670,7 +694,6 @@ trait Styles {
                     "{{WRAPPER}} {$selector} *"   => 'color: {{VALUE}};',
                     "{{WRAPPER}} {$no_preview} *" => 'color: {{VALUE}};',
                 ],
-                'separator' => 'before',
             ]
         );
 
@@ -678,8 +701,8 @@ trait Styles {
             Group_Control_Typography::get_type(),
             [
                 'name'     => "{$prefix}_typography",
-                'selector' => "{{WRAPPER}} {$selector}",
-                'selector' => "{{WRAPPER}} {$no_preview}",
+                'selector' => "{{WRAPPER}} {$selector} span",
+                // 'selector' => "{{WRAPPER}} {$no_preview} span",
             ]
         );
 
@@ -687,8 +710,8 @@ trait Styles {
             Group_Control_Text_Stroke::get_type(),
             [
                 'name'     => "{$prefix}_text_stroke",
-                'selector' => "{{WRAPPER}} {$selector}",
-                'selector' => "{{WRAPPER}} {$no_preview}",
+                'selector' => "{{WRAPPER}} {$selector} span",
+                // 'selector' => "{{WRAPPER}} {$no_preview}",
             ]
         );
 
@@ -696,8 +719,8 @@ trait Styles {
             Group_Control_Text_Shadow::get_type(),
             [
                 'name'     => "{$prefix}_text_shadow",
-                'selector' => "{{WRAPPER}} {$selector}",
-                'selector' => "{{WRAPPER}} {$no_preview}",
+                'selector' => "{{WRAPPER}} {$selector} span",
+                // 'selector' => "{{WRAPPER}} {$no_preview}",
             ]
         );
 
@@ -715,7 +738,6 @@ trait Styles {
             [
                 'label'     => __( 'Bottom Info', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 
@@ -774,7 +796,7 @@ trait Styles {
             Group_Control_Typography::get_type(),
             [
                 'name'     => 'listing_info_item_list_typography',
-                'selector' => "{{WRAPPER}} {$selector} ul li *, {{WRAPPER}} {$no_preview}",
+                'selector' => ".directorist-content-active {{WRAPPER}} {$selector} li *, .directorist-content-active {{WRAPPER}} {$no_preview}",
             ]
         );
 
@@ -811,7 +833,6 @@ trait Styles {
             [
                 'label'     => __( 'Field Label', 'addonskit-for-elementor' ),
                 'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
             ]
         );
 

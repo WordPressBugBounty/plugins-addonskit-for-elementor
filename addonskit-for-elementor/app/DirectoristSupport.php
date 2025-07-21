@@ -7,11 +7,14 @@
 
 namespace AddonskitForElementor;
 
+use AddonskitForElementor\Utils\Helper;
+
 class DirectoristSupport {
 	protected static $instance = null;
 
 	public function __construct() {
 		// add_filter( 'atbdp_listing_type_settings_field_list', [$this, 'all_listing_widgets'] );
+		add_filter( 'directorist_account_page_accessible', [$this, 'directorist_account_page_accessible'] );
 	}
 
 	public static function instance() {
@@ -21,6 +24,14 @@ class DirectoristSupport {
 		}
 
 		return self::$instance;
+	}
+
+	public function directorist_account_page_accessible() {
+		if ( Helper::is_edit() ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public function all_listing_widgets( $fields ) {

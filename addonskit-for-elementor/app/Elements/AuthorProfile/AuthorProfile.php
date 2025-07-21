@@ -78,13 +78,13 @@ class AuthorProfile extends Widget_Base {
 
     protected function register_styles(): void {
 
-        $this->register_container_style_controls( __( 'Profile: Container', 'addonskit-for-elementor' ), 'profile_area', '.directorist-author-profile__wrap' );
+        $this->register_container_style_controls( __( 'Header: Container', 'addonskit-for-elementor' ), 'profile_area', '.directorist-author-profile__wrap' );
 
         $this->register_author_profile_info();
 
-        $this->register_container_style_controls( __( 'Profile: Reviews & Listings Container', 'addonskit-for-elementor' ), 'profile_review_listings_area', '.directorist-author-profile__meta-list__item' );
+        $this->register_container_style_controls( __( 'Header: Info Container', 'addonskit-for-elementor' ), 'profile_review_listings_area', '.directorist-author-profile__meta-list__item' );
 
-        $this->register_profile_info_controls( __( 'Profile: Reviews & Listings', 'addonskit-for-elementor' ), 'profile_review_listings_icon', '.directorist-author-profile__meta-list' );
+        $this->register_profile_info_controls( __( 'Header: Info', 'addonskit-for-elementor' ), 'profile_review_listings_icon', '.directorist-author-profile__meta-list' );
 
         $this->register_container_style_controls( __( 'Contact Info: Container', 'addonskit-for-elementor' ), 'profile_contact_info', '.directorist-author-contact' );
 
@@ -100,9 +100,9 @@ class AuthorProfile extends Widget_Base {
         /**
          * All Listings - Controls
          */
-        $this->register_text_controls( __( 'Listings: Section Title', 'addonskit-for-elementor' ), 'author_listings_title', '.directorist-author-listing-top__title' );
+        $this->register_text_controls( __( 'Listings Section Title', 'addonskit-for-elementor' ), 'author_listings_title', '.directorist-author-listing-top__title' );
 
-        $this->register_container_style_controls( __( 'Listings: Directory Type Container', 'addonskit-for-elementor' ), 'directory_type_container', '.directorist-author-listing-top__filter' );
+        $this->register_container_style_controls( __( 'Type Container', 'addonskit-for-elementor' ), 'directory_type_container', '.directorist-author-listing-top__filter' );
 
         $this->register_directory_type_style_controls( '.directorist-type-nav__list .directorist-type-nav__link', [], '.directorist-type-nav__list__current .directorist-type-nav__link' );
 

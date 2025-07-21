@@ -26,7 +26,7 @@ trait Styles {
         $this->start_controls_section(
             'section_author_image_style',
             [
-                'label' => esc_html__( 'Profile Info', 'addonskit-for-elementor' ),
+                'label' => esc_html__( 'Author Info', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );
@@ -92,13 +92,13 @@ trait Styles {
         );
 
         $this->add_responsive_control(
-            'author_image_text_padding',
+            'author_image_text_margin',
             [
-                'label'      => esc_html__( 'Padding', 'addonskit-for-elementor' ),
+                'label'      => esc_html__( 'Margin', 'addonskit-for-elementor' ),
                 'type'       => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
                 'selectors'  => [
-                    "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    "{{WRAPPER}} {$selector}" => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -117,7 +117,7 @@ trait Styles {
         $this->start_controls_section(
             "section_{$prefix}_style",
             [
-                'label' => __( 'Contact Info', 'addonskit-for-elementor' ),
+                'label' => __( 'Author Contact', 'addonskit-for-elementor' ),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );

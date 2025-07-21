@@ -336,6 +336,7 @@ trait Styles {
             [
                 'name'     => "{$prefix}_background_normal",
                 'selector' => "{{WRAPPER}} {$selector}",
+                'exclude'  => ['image']
             ]
         );
 
@@ -438,6 +439,112 @@ trait Styles {
                     "{{WRAPPER}} {$selector}" => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
                 'separator'  => 'before',
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function register_account_text_controls( string $section_label = '', string $prefix = '' ): void {
+
+        $this->start_controls_section(
+            "section_{$prefix}_style",
+            [
+                'label'     => $section_label,
+                'tab'       => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            "{$prefix}_color",
+            [
+                'label'     => esc_html__( 'Text Color', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    "{{WRAPPER}} .directorist-radio__label"                      => 'color: {{VALUE}}',
+                    "{{WRAPPER}} .directorist-checkbox__label"                   => 'color: {{VALUE}}',
+                    "{{WRAPPER}} .directorist-authentication__form p"            => 'color: {{VALUE}}',
+                    "{{WRAPPER}} .directorist-authentication__form__toggle-area" => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name'     => "{$prefix}_typography",
+                'selector' => "{{WRAPPER}} .directorist-radio__label,
+                    {{WRAPPER}} .directorist-checkbox__label,
+                    {{WRAPPER}} .directorist-authentication__form p,
+                    {{WRAPPER}} .directorist-authentication__form p button,
+                    {{WRAPPER}} .directorist-authentication__form__toggle-area",
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Text_Stroke::get_type(),
+            [
+                'name'     => "{$prefix}_text_stroke",
+                'selector' => "{{WRAPPER}} .directorist-radio__label,
+                    {{WRAPPER}} .directorist-checkbox__label,
+                    {{WRAPPER}} .directorist-authentication__form p,
+                    {{WRAPPER}} .directorist-authentication__form p button,
+                    {{WRAPPER}} .directorist-authentication__form__toggle-area",
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Text_Shadow::get_type(),
+            [
+                'name'     => "{$prefix}_text_shadow",
+                'selector' => "{{WRAPPER}} .directorist-radio__label,
+                    {{WRAPPER}} .directorist-checkbox__label,
+                    {{WRAPPER}} .directorist-authentication__form p,
+                    {{WRAPPER}} .directorist-authentication__form p button,
+                    {{WRAPPER}} .directorist-authentication__form__toggle-area",
+            ]
+        );
+
+        $this->end_controls_section();
+    }
+
+    protected function register_form_fields_separator_controls( $section_label = '', $prefix = '', $selector = '' ): void {
+
+        $this->start_controls_section(
+            "section_{$prefix}_style",
+            [
+                'label' => $section_label,
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            "{$prefix}_border",
+            [
+                'label'      => __( 'Width', 'addonskit-for-elementor' ),
+                'type'       => Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range'      => [
+                    'px' => [
+                        'min'  => 0,
+                        'max'  => 10,
+                        'step' => 1,
+                    ],
+                ],
+                'selectors'  => [
+                    "{{WRAPPER}} {$selector}" => 'border-bottom: {{SIZE}}{{UNIT}} solid;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            "{$prefix}_border_color",
+            [
+                'label'     => __( 'Color', 'addonskit-for-elementor' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => [
+                    "{{WRAPPER}} {$selector}" => 'border-color: {{VALUE}};',
+                ],
             ]
         );
 
