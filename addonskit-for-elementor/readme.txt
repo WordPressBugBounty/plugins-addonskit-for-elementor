@@ -3,7 +3,7 @@ Contributors: wpwax
 Tags: addons kit, elementor widget, directory, templates, directory websites  
 Requires at least: 6.0  
 Tested up to: 6.8
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Requires PHP: 7.4  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
@@ -47,13 +47,17 @@ Regular updates and premium support ensure a smooth experience with Directorist 
 
 == Changelog ==
 
+= 1.3.0 - Nov 27, 2025 =
+* Added  : Column control option for category and location widgets
+* Added  : Options to display All directory in category & location widgets
+* Added  : Border control for directory type in related all widgets
+* Fixed  : Sidebar issue for category and location widgets
+
 = 1.2.0 - Jul 21, 2025 =
 * Added  : Style function on Sign In * Sign Up widget
 * Improve: Style function on all widgets
 * Fixed  : Single listing widgets issue
 * Fixed  : Some security issue
-
-== Changelog ==
 
 = 1.1.9 - Apr 20, 2025 =
 * Fix: Stable version issue

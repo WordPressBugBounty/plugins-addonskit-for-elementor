@@ -496,7 +496,6 @@ class SingleCategory extends Widget_Base {
 
     protected function register_search_form_styles(): void {
         if ( ! get_directorist_option( 'listing_hide_top_search_bar', false ) ) {
-
 			//Top search
 			$this->register_form_container_style_controls( __( 'Search Form: Container', 'addonskit-for-elementor' ), 'top-search-form-container', '.directorist-basic-search .directorist-search-form__box', ['sidebar!' => 'no_sidebar' ] );
 
@@ -542,7 +541,7 @@ class SingleCategory extends Widget_Base {
     }
 
     protected function render(): void {
-        $settings = $this->get_settings();
+        $settings   = $this->get_settings();
         $attributes = $this->prepare_attributes($settings);
         
         Helper::run_shortcode('directorist_category', $attributes);
@@ -552,7 +551,6 @@ class SingleCategory extends Widget_Base {
         $attributes = [
             'header'                => $settings['header'] ?? 'no',
             'header_title'          => $settings['header_title'],
-            'advanced_filter'       => $this->get_filter_setting($settings),
             'view'                  => $settings['view'],
             'map_height'            => $settings['map_height'],
             'columns'               => $settings['columns'],
@@ -571,6 +569,9 @@ class SingleCategory extends Widget_Base {
 
         if (!empty($settings['sidebar'])) {
             $attributes['sidebar'] = $settings['sidebar'];
+			if ( $settings['sidebar'] === 'no_sidebar' ) {
+				$attributes['advanced_filter'] = $settings['filter'];
+			}
         }
 
         if (directorist_is_multi_directory_enabled()) {
@@ -582,11 +583,6 @@ class SingleCategory extends Widget_Base {
 
     private function prepare_taxonomy_terms($terms) {
         return is_array($terms) && !empty($terms) ? implode(',', $terms) : '';
-    }
-
-    private function get_filter_setting(array $settings): string {
-        $filter = $settings['filter'] ?? 'no';
-        return $settings['sidebar'] === 'no_sidebar' ? $filter : 'no';
     }
 
     private function add_directory_type_attributes(array $attributes, array $settings): array {

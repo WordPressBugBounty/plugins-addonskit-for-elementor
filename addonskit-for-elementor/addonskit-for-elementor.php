@@ -4,7 +4,7 @@
  * Description: Complete Elementor Widgets for Directorist.
  * Author: wpWax
  * Author URI: https://wpwax.com
- * Version: 1.2.0
+ * Version: 1.3.0
  * Requires Plugins: directorist, elementor
  * Elementor tested up to: 3.30
  * License: GPL2
@@ -39,7 +39,7 @@
 defined( 'ABSPATH' ) || exit;
 
 final class AddonskitForElementor {
-	private $version = '1.2.0';
+	private $version = '1.3.0';
 
 	private $min_php = '7.4';
 
@@ -63,10 +63,14 @@ final class AddonskitForElementor {
 			return;
 		}
 
-		if ( ATBDP_VERSION < '8.0.0' ) {
+		if ( ! $this->is_directorist_active() ) {
+			add_action( 'admin_notices', [$this, 'directorist_required_notice'] );
+			return;
+		}
+
+		if ( ! defined( 'ATBDP_VERSION' ) || ATBDP_VERSION < '8.0.0' ) {
 			add_action( 'admin_notices', [$this, 'directorist_required_version_notice'] );
 			return;
-
 		}
 
 		$this->define_constants();
@@ -74,6 +78,30 @@ final class AddonskitForElementor {
 		$this->app = \AddonskitForElementor\App::initialize();
 
 		do_action( 'addonskit_for_elementor_loaded' );
+	}
+
+	public function is_directorist_active(): bool {
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			include_once ABSPATH . '/wp-admin/includes/plugin.php';
+		}
+
+		return is_plugin_active( 'directorist/directorist-base.php' );
+	}
+
+	public function directorist_required_notice() {
+		$message = sprintf(
+			// translators: %1$s: opening strong tag, %2$s: closing strong tag
+			esc_html__('%1$sDirectorist Addons Kit for Elementor%2$s requires %1$sDirectorist%2$s plugin to be installed and activated.', 'addonskit-for-elementor'),
+			'<strong>',
+			'</strong>'
+		);
+
+		printf(
+			'<div class="error"><p>%s</p></div>',
+			wp_kses($message, [
+				'strong' => []
+			])
+		);
 	}
 
 	public function directorist_required_version_notice() {

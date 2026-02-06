@@ -552,7 +552,6 @@ class SingleTag extends Widget_Base {
         $attributes = [
             'header'                => $settings['header'] ?? 'no',
             'header_title'          => $settings['header_title'],
-            'advanced_filter'       => $this->get_filter_setting($settings),
             'view'                  => $settings['view'],
             'map_height'            => $settings['map_height'],
             'columns'               => $settings['columns'],
@@ -571,6 +570,9 @@ class SingleTag extends Widget_Base {
 
         if (!empty($settings['sidebar'])) {
             $attributes['sidebar'] = $settings['sidebar'];
+			if ( $settings['sidebar'] === 'no_sidebar' ) {
+				$attributes['advanced_filter'] = $settings['filter'];
+			}
         }
 
         if (directorist_is_multi_directory_enabled()) {
@@ -582,11 +584,6 @@ class SingleTag extends Widget_Base {
 
     private function prepare_taxonomy_terms($terms) {
         return is_array($terms) && !empty($terms) ? implode(',', $terms) : '';
-    }
-
-    private function get_filter_setting(array $settings): string {
-        $filter = $settings['filter'] ?? 'no';
-        return $settings['sidebar'] === 'no_sidebar' ? $filter : 'no';
     }
 
     private function add_directory_type_attributes(array $attributes, array $settings): array {

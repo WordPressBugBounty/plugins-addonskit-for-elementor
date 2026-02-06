@@ -86,6 +86,14 @@ trait DirectoryTypeStyles {
                 'separation' => 'after',
             ]
         );
+        
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name'     => 'directory_types_area_border',
+                'selector' => "{{WRAPPER}} .directorist-listing-type-selection, {{WRAPPER}} .directorist-type-nav__list",
+            ]
+        );
 
         $this->start_controls_tabs( 'tabs_button_style' );
 

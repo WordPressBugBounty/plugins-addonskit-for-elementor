@@ -39,7 +39,7 @@ class DirectoristTaxonomies {
     }
 
     public static function directory_types(): array {
-        $listing_types = [];
+        $listing_types = ['' => __('All', 'addonskit-for-elementor')];
         $all_types     = get_terms(
             [
                 'taxonomy'   => ATBDP_TYPE,

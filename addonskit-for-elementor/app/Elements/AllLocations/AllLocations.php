@@ -114,7 +114,6 @@ class AllLocations extends Widget_Base {
 					'2' => __( '2 Items / Row', 'addonskit-for-elementor' ),
 				],
 				'default'   => '3',
-				'condition' => ['view' => 'grid'],
 				'separator' => 'before',
 			]
 		);
@@ -241,9 +240,8 @@ class AllLocations extends Widget_Base {
 			if ( is_array( $type ) ) {
 				$atts['directory_type'] = implode( ',', $type );
 			}
-			if ( $settings['default_type'] ) {
-				$atts['default_directory_type'] = $settings['default_type'];
-			}
+			
+			$atts['default_directory_type'] = $settings['default_type'] ?: 'all';
 		}
 
 		/**

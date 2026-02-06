@@ -2,10 +2,10 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Directorist AddonsKit for Elementor 1.2.0\n"
+"Project-Id-Version: Directorist AddonsKit for Elementor 1.3.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/addonskit-for-elementor\n"
-"POT-Creation-Date: 2025-07-21 04:37:48+00:00\n"
+"POT-Creation-Date: 2025-11-27 04:56:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,7 +14,14 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: addonskit-for-elementor.php:82
+#: addonskit-for-elementor.php:94
+#. translators: %1$s: opening strong tag, %2$s: closing strong tag
+msgid ""
+"%1$sDirectorist Addons Kit for Elementor%2$s requires %1$sDirectorist%2$s "
+"plugin to be installed and activated."
+msgstr ""
+
+#: addonskit-for-elementor.php:110
 #. translators: %1$s: opening strong tag, %2$s: closing strong tag
 msgid ""
 "The current version of your&nbsp;%1$sDirectorist is not compatible with "
@@ -23,32 +30,32 @@ msgid ""
 "later%2$s."
 msgstr ""
 
-#: addonskit-for-elementor.php:111
+#: addonskit-for-elementor.php:139
 msgid "An Error Occurred"
 msgstr ""
 
-#: addonskit-for-elementor.php:116
+#: addonskit-for-elementor.php:144
 #. translators: %s: PHP version number
 msgid "<h2>Your installed PHP Version is: "
 msgstr ""
 
-#: addonskit-for-elementor.php:123
+#: addonskit-for-elementor.php:151
 #. translators: %s: minimum required PHP version
 msgid "The Addonskit For Elementor plugin requires PHP version %s or greater."
 msgstr ""
 
-#: addonskit-for-elementor.php:130
+#: addonskit-for-elementor.php:158
 #. translators: %s: link to PHP supported versions
 msgid ""
 "The version of your PHP is %s. You should update your PHP software or "
 "contact your host regarding this matter."
 msgstr ""
 
-#: addonskit-for-elementor.php:133
+#: addonskit-for-elementor.php:161
 msgid "unsupported and old"
 msgstr ""
 
-#: addonskit-for-elementor.php:139
+#: addonskit-for-elementor.php:167
 msgid "Plugin Activation Error"
 msgstr ""
 
@@ -77,7 +84,6 @@ msgstr ""
 #: app/Elements/Checkout/Checkout.php:57
 #: app/Elements/PaymentReceipt/PaymentReceipt.php:45
 #: app/Elements/SearchListing/SearchListing.php:59
-#: app/Elements/SingleCategory/SingleCategory copy.php:66
 #: app/Elements/TransactionFailure/TransactionFailure.php:52
 #: app/Elements/UserDashboard/UserDashboard.php:57
 msgid "General"
@@ -86,18 +92,15 @@ msgstr ""
 #: app/Elements/AddListing/AddListing.php:69
 #: app/Elements/AllCategories/AllCategories.php:68
 #: app/Elements/AllLocations/AllLocations.php:69
-#: app/Elements/SingleCategory/SingleCategory copy.php:193
 msgid "Directory Types"
 msgstr ""
 
 #: app/Elements/AddListing/AddListing.php:74
 #: app/Elements/SearchListing/SearchListing.php:143
-#: app/Elements/SingleCategory/SingleCategory copy.php:199
 msgid "Leave it empty for showing all directory types"
 msgstr ""
 
 #: app/Elements/AddListing/AddListing.php:85
-#: app/Elements/SingleCategory/SingleCategory copy.php:416
 msgid "Directory Type: Container"
 msgstr ""
 
@@ -146,7 +149,7 @@ msgstr ""
 #: app/Elements/AuthorProfile/Styles.php:101
 #: app/Elements/AuthorProfile/Styles.php:288 app/Elements/Common/Button.php:223
 #: app/Elements/Common/Button.php:399 app/Elements/Common/Container.php:42
-#: app/Elements/Common/DirectoryTypeStyles.php:292
+#: app/Elements/Common/DirectoryTypeStyles.php:300
 #: app/Elements/SearchListing/Styles.php:36
 #: app/Elements/SingleListingFields/Info/Styles.php:73
 #: app/Elements/SingleListingFields/SocialInfo/Styles.php:53
@@ -162,7 +165,7 @@ msgstr ""
 #: app/Elements/AllListings/Styles.php:327
 #: app/Elements/AllListings/Styles.php:486 app/Elements/Common/Button.php:44
 #: app/Elements/Common/Button.php:280
-#: app/Elements/Common/DirectoryTypeStyles.php:95
+#: app/Elements/Common/DirectoryTypeStyles.php:103
 #: app/Elements/Common/Pagination.php:30
 #: app/Elements/SingleListingFields/Review/Styles.php:33
 #: app/Elements/SingleListingFields/Review/Styles.php:106
@@ -197,9 +200,9 @@ msgstr ""
 #: app/Elements/Common/Button.php:141 app/Elements/Common/Button.php:199
 #: app/Elements/Common/Button.php:317 app/Elements/Common/Button.php:375
 #: app/Elements/Common/Container.php:72
-#: app/Elements/Common/DirectoryTypeStyles.php:135
-#: app/Elements/Common/DirectoryTypeStyles.php:208
-#: app/Elements/Common/DirectoryTypeStyles.php:268
+#: app/Elements/Common/DirectoryTypeStyles.php:143
+#: app/Elements/Common/DirectoryTypeStyles.php:216
+#: app/Elements/Common/DirectoryTypeStyles.php:276
 #: app/Elements/Common/Pagination.php:68 app/Elements/Common/Pagination.php:126
 #: app/Elements/Common/Pagination.php:184
 #: app/Elements/SearchListing/Styles.php:80
@@ -239,9 +242,9 @@ msgstr ""
 #: app/Elements/AllLocations/Styles.php:122 app/Elements/Common/Button.php:51
 #: app/Elements/Common/Button.php:110 app/Elements/Common/Button.php:170
 #: app/Elements/Common/Button.php:287 app/Elements/Common/Button.php:346
-#: app/Elements/Common/DirectoryTypeStyles.php:102
-#: app/Elements/Common/DirectoryTypeStyles.php:165
-#: app/Elements/Common/DirectoryTypeStyles.php:238
+#: app/Elements/Common/DirectoryTypeStyles.php:110
+#: app/Elements/Common/DirectoryTypeStyles.php:173
+#: app/Elements/Common/DirectoryTypeStyles.php:246
 #: app/Elements/Common/TextControls.php:24
 #: app/Elements/Common/TextControls.php:73
 #: app/Elements/SearchListing/Styles.php:113
@@ -315,7 +318,7 @@ msgstr ""
 #: app/Elements/AllListings/Styles.php:603
 #: app/Elements/AuthorProfile/Styles.php:355 app/Elements/Common/Button.php:163
 #: app/Elements/Common/Button.php:339
-#: app/Elements/Common/DirectoryTypeStyles.php:231
+#: app/Elements/Common/DirectoryTypeStyles.php:239
 #: app/Elements/Common/Pagination.php:147
 #: app/Elements/SingleListingFields/Review/Styles.php:61
 #: app/Elements/SingleListingFields/Review/Styles.php:133
@@ -383,7 +386,7 @@ msgstr ""
 #: app/Elements/AddListing/Styles.php:441
 #: app/Elements/AllListings/Styles.php:116
 #: app/Elements/AllListings/Styles.php:545 app/Elements/Common/Button.php:103
-#: app/Elements/Common/DirectoryTypeStyles.php:157
+#: app/Elements/Common/DirectoryTypeStyles.php:165
 #: app/Elements/Common/Pagination.php:89
 #: app/Elements/UserDashboard/Styles.php:101
 #: app/Elements/UserDashboard/Styles.php:564
@@ -530,7 +533,6 @@ msgstr ""
 #: app/Elements/AllCategories/AllCategories.php:80
 #: app/Elements/AllLocations/AllLocations.php:81
 #: app/Elements/SearchListing/SearchListing.php:154
-#: app/Elements/SingleCategory/SingleCategory copy.php:206
 msgid "Active Directory"
 msgstr ""
 
@@ -538,7 +540,6 @@ msgstr ""
 #: app/Elements/AllListings/AllListings.php:257
 #: app/Elements/AllLocations/AllLocations.php:92
 #: app/Elements/SearchResult/SearchResult.php:252
-#: app/Elements/SingleCategory/SingleCategory copy.php:122
 #: app/Elements/SingleCategory/SingleCategory.php:252
 #: app/Elements/SingleLocation/SingleLocation.php:252
 #: app/Elements/SingleTag/SingleTag.php:252
@@ -565,11 +566,6 @@ msgstr ""
 #: app/Elements/Post/Post.php:136 app/Elements/Post/Post.php:147
 #: app/Elements/Post/Post.php:158 app/Elements/Post/Post.php:169
 #: app/Elements/SearchResult/SearchResult.php:280
-#: app/Elements/SingleCategory/SingleCategory copy.php:75
-#: app/Elements/SingleCategory/SingleCategory copy.php:102
-#: app/Elements/SingleCategory/SingleCategory copy.php:151
-#: app/Elements/SingleCategory/SingleCategory copy.php:183
-#: app/Elements/SingleCategory/SingleCategory copy.php:376
 #: app/Elements/SingleCategory/SingleCategory.php:280
 #: app/Elements/SingleLocation/SingleLocation.php:280
 #: app/Elements/SingleTag/SingleTag.php:280
@@ -582,11 +578,6 @@ msgstr ""
 #: app/Elements/Post/Post.php:137 app/Elements/Post/Post.php:148
 #: app/Elements/Post/Post.php:159 app/Elements/Post/Post.php:170
 #: app/Elements/SearchResult/SearchResult.php:281
-#: app/Elements/SingleCategory/SingleCategory copy.php:76
-#: app/Elements/SingleCategory/SingleCategory copy.php:103
-#: app/Elements/SingleCategory/SingleCategory copy.php:152
-#: app/Elements/SingleCategory/SingleCategory copy.php:184
-#: app/Elements/SingleCategory/SingleCategory copy.php:377
 #: app/Elements/SingleCategory/SingleCategory.php:281
 #: app/Elements/SingleLocation/SingleLocation.php:281
 #: app/Elements/SingleTag/SingleTag.php:281
@@ -595,7 +586,6 @@ msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:110
 #: app/Elements/AllLocations/AllLocations.php:111
-#: app/Elements/SingleCategory/SingleCategory copy.php:154
 msgid "6 Items / Row"
 msgstr ""
 
@@ -605,143 +595,129 @@ msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:112
 #: app/Elements/AllLocations/AllLocations.php:112
-#: app/Elements/SingleCategory/SingleCategory copy.php:155
 msgid "4 Items / Row"
 msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:113
 #: app/Elements/AllLocations/AllLocations.php:113
-#: app/Elements/SingleCategory/SingleCategory copy.php:156
 msgid "3 Items / Row"
 msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:114
 #: app/Elements/AllLocations/AllLocations.php:114
-#: app/Elements/SingleCategory/SingleCategory copy.php:157
 msgid "2 Items / Row"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:125
+#: app/Elements/AllCategories/AllCategories.php:124
 #: app/Elements/AllListings/AllListings.php:323
-#: app/Elements/AllLocations/AllLocations.php:125
+#: app/Elements/AllLocations/AllLocations.php:124
 #: app/Elements/SearchResult/SearchResult.php:348
-#: app/Elements/SingleCategory/SingleCategory copy.php:345
 #: app/Elements/SingleCategory/SingleCategory.php:318
 #: app/Elements/SingleLocation/SingleLocation.php:318
 #: app/Elements/SingleTag/SingleTag.php:318
 msgid "Order by"
 msgstr ""
 
+#: app/Elements/AllCategories/AllCategories.php:127
+#: app/Elements/AllLocations/AllLocations.php:127
+msgid "ID"
+msgstr ""
+
 #: app/Elements/AllCategories/AllCategories.php:128
 #: app/Elements/AllLocations/AllLocations.php:128
-msgid "ID"
+msgid "Count"
 msgstr ""
 
 #: app/Elements/AllCategories/AllCategories.php:129
 #: app/Elements/AllLocations/AllLocations.php:129
-msgid "Count"
-msgstr ""
-
-#: app/Elements/AllCategories/AllCategories.php:130
-#: app/Elements/AllLocations/AllLocations.php:130
 #: app/Elements/Team/Team.php:110
 msgid "Name"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:131
-#: app/Elements/AllLocations/AllLocations.php:131
+#: app/Elements/AllCategories/AllCategories.php:130
+#: app/Elements/AllLocations/AllLocations.php:130
 msgid "Slug"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:141
+#: app/Elements/AllCategories/AllCategories.php:140
 #: app/Elements/AllListings/AllListings.php:374
 #: app/Elements/SearchResult/SearchResult.php:318
-#: app/Elements/SingleCategory/SingleCategory copy.php:276
 #: app/Elements/SingleCategory/SingleCategory.php:369
 #: app/Elements/SingleLocation/SingleLocation.php:369
 #: app/Elements/SingleTag/SingleTag.php:369
 msgid "Specify Categories"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:153
+#: app/Elements/AllCategories/AllCategories.php:152
 msgid "Categories Order"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:156
+#: app/Elements/AllCategories/AllCategories.php:155
 #: app/Elements/AllListings/AllListings.php:340
-#: app/Elements/AllLocations/AllLocations.php:156
+#: app/Elements/AllLocations/AllLocations.php:155
 #: app/Elements/SearchResult/SearchResult.php:365
-#: app/Elements/SingleCategory/SingleCategory copy.php:363
 #: app/Elements/SingleCategory/SingleCategory.php:335
 #: app/Elements/SingleLocation/SingleLocation.php:335
 #: app/Elements/SingleTag/SingleTag.php:335
 msgid " ASC"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:157
+#: app/Elements/AllCategories/AllCategories.php:156
 #: app/Elements/AllListings/AllListings.php:341
-#: app/Elements/AllLocations/AllLocations.php:157
+#: app/Elements/AllLocations/AllLocations.php:156
 #: app/Elements/SearchResult/SearchResult.php:366
-#: app/Elements/SingleCategory/SingleCategory copy.php:364
 #: app/Elements/SingleCategory/SingleCategory.php:336
 #: app/Elements/SingleLocation/SingleLocation.php:336
 #: app/Elements/SingleTag/SingleTag.php:336
 msgid " DESC"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:167
+#: app/Elements/AllCategories/AllCategories.php:166
 msgid "Number of Categories to Show"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:174
+#: app/Elements/AllCategories/AllCategories.php:173
 msgid "Set -1 to display all categories"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:181
+#: app/Elements/AllCategories/AllCategories.php:180
 #: app/Elements/AllListings/AllListings.php:420
-#: app/Elements/AllLocations/AllLocations.php:181
+#: app/Elements/AllLocations/AllLocations.php:180
 #: app/Elements/AuthorProfile/AuthorProfile.php:67
 #: app/Elements/SearchResult/SearchResult.php:387
-#: app/Elements/SingleCategory/SingleCategory copy.php:333
 #: app/Elements/SingleCategory/SingleCategory.php:414
 #: app/Elements/SingleLocation/SingleLocation.php:414
 #: app/Elements/SingleTag/SingleTag.php:414
 msgid "Only For Logged In User?"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:183
+#: app/Elements/AllCategories/AllCategories.php:182
 #: app/Elements/AllListings/AllListings.php:422
-#: app/Elements/AllLocations/AllLocations.php:183
+#: app/Elements/AllLocations/AllLocations.php:182
 #: app/Elements/AuthorProfile/AuthorProfile.php:69
 #: app/Elements/SearchListing/SearchListing.php:362
 #: app/Elements/SearchResult/SearchResult.php:389
-#: app/Elements/SingleCategory/SingleCategory copy.php:311
-#: app/Elements/SingleCategory/SingleCategory copy.php:323
-#: app/Elements/SingleCategory/SingleCategory copy.php:335
 #: app/Elements/SingleCategory/SingleCategory.php:416
 #: app/Elements/SingleLocation/SingleLocation.php:416
 #: app/Elements/SingleTag/SingleTag.php:416
 msgid "Yes"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:184
+#: app/Elements/AllCategories/AllCategories.php:183
 #: app/Elements/AllListings/AllListings.php:423
-#: app/Elements/AllLocations/AllLocations.php:184
+#: app/Elements/AllLocations/AllLocations.php:183
 #: app/Elements/AuthorProfile/AuthorProfile.php:70
 #: app/Elements/SearchListing/SearchListing.php:363
 #: app/Elements/SearchResult/SearchResult.php:390
-#: app/Elements/SingleCategory/SingleCategory copy.php:312
-#: app/Elements/SingleCategory/SingleCategory copy.php:324
-#: app/Elements/SingleCategory/SingleCategory copy.php:336
 #: app/Elements/SingleCategory/SingleCategory.php:417
 #: app/Elements/SingleLocation/SingleLocation.php:417
 #: app/Elements/SingleTag/SingleTag.php:417
 msgid "No"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:198
+#: app/Elements/AllCategories/AllCategories.php:197
 #: app/Elements/AllListings/AllListings.php:494
-#: app/Elements/AllLocations/AllLocations.php:198
+#: app/Elements/AllLocations/AllLocations.php:197
 #: app/Elements/SearchResult/SearchResult.php:461
 #: app/Elements/SingleCategory/SingleCategory.php:488
 #: app/Elements/SingleLocation/SingleLocation.php:488
@@ -749,7 +725,7 @@ msgstr ""
 msgid "Type: Container"
 msgstr ""
 
-#: app/Elements/AllCategories/AllCategories.php:217
+#: app/Elements/AllCategories/AllCategories.php:216
 msgid "Listing Count"
 msgstr ""
 
@@ -828,9 +804,6 @@ msgstr ""
 #: app/Elements/SearchResult/SearchResult.php:125
 #: app/Elements/SearchResult/SearchResult.php:216
 #: app/Elements/SearchResult/SearchResult.php:424
-#: app/Elements/SingleCategory/SingleCategory copy.php:89
-#: app/Elements/SingleCategory/SingleCategory copy.php:221
-#: app/Elements/SingleCategory/SingleCategory copy.php:390
 #: app/Elements/SingleCategory/SingleCategory.php:125
 #: app/Elements/SingleCategory/SingleCategory.php:216
 #: app/Elements/SingleCategory/SingleCategory.php:451
@@ -854,8 +827,6 @@ msgstr ""
 #: app/Elements/SearchListing/SearchListing.php:341
 #: app/Elements/SearchResult/SearchResult.php:129
 #: app/Elements/SearchResult/SearchResult.php:428
-#: app/Elements/SingleCategory/SingleCategory copy.php:225
-#: app/Elements/SingleCategory/SingleCategory copy.php:394
 #: app/Elements/SingleCategory/SingleCategory.php:129
 #: app/Elements/SingleCategory/SingleCategory.php:455
 #: app/Elements/SingleListingFields/Action/Action.php:86
@@ -878,9 +849,6 @@ msgstr ""
 #: app/Elements/SearchResult/SearchResult.php:133
 #: app/Elements/SearchResult/SearchResult.php:217
 #: app/Elements/SearchResult/SearchResult.php:432
-#: app/Elements/SingleCategory/SingleCategory copy.php:90
-#: app/Elements/SingleCategory/SingleCategory copy.php:229
-#: app/Elements/SingleCategory/SingleCategory copy.php:398
 #: app/Elements/SingleCategory/SingleCategory.php:133
 #: app/Elements/SingleCategory/SingleCategory.php:217
 #: app/Elements/SingleCategory/SingleCategory.php:459
@@ -911,8 +879,6 @@ msgstr ""
 #: app/Elements/SearchListing/SearchListing.php:196
 #: app/Elements/SearchResult/SearchResult.php:152
 #: app/Elements/SearchResult/SearchResult.php:215
-#: app/Elements/SingleCategory/SingleCategory copy.php:88
-#: app/Elements/SingleCategory/SingleCategory copy.php:248
 #: app/Elements/SingleCategory/SingleCategory.php:152
 #: app/Elements/SingleCategory/SingleCategory.php:215
 #: app/Elements/SingleLocation/SingleLocation.php:152
@@ -925,7 +891,6 @@ msgstr ""
 #: app/Elements/AllListings/AllListings.php:161
 #: app/Elements/SearchListing/SearchListing.php:200
 #: app/Elements/SearchResult/SearchResult.php:156
-#: app/Elements/SingleCategory/SingleCategory copy.php:252
 #: app/Elements/SingleCategory/SingleCategory.php:156
 #: app/Elements/SingleLocation/SingleLocation.php:156
 #: app/Elements/SingleTag/SingleTag.php:156
@@ -935,7 +900,6 @@ msgstr ""
 #: app/Elements/AllListings/AllListings.php:165
 #: app/Elements/SearchListing/SearchListing.php:204
 #: app/Elements/SearchResult/SearchResult.php:160
-#: app/Elements/SingleCategory/SingleCategory copy.php:256
 #: app/Elements/SingleCategory/SingleCategory.php:160
 #: app/Elements/SingleLocation/SingleLocation.php:160
 #: app/Elements/SingleTag/SingleTag.php:160
@@ -945,7 +909,6 @@ msgstr ""
 #: app/Elements/AllListings/AllListings.php:169
 #: app/Elements/SearchListing/SearchListing.php:208
 #: app/Elements/SearchResult/SearchResult.php:164
-#: app/Elements/SingleCategory/SingleCategory copy.php:260
 #: app/Elements/SingleCategory/SingleCategory.php:164
 #: app/Elements/SingleLocation/SingleLocation.php:164
 #: app/Elements/SingleTag/SingleTag.php:164
@@ -1055,7 +1018,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:209
 #: app/Elements/SearchResult/SearchResult.php:204
-#: app/Elements/SingleCategory/SingleCategory copy.php:114
 #: app/Elements/SingleCategory/SingleCategory.php:204
 #: app/Elements/SingleLocation/SingleLocation.php:204
 #: app/Elements/SingleTag/SingleTag.php:204
@@ -1064,7 +1026,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:217
 #: app/Elements/SearchResult/SearchResult.php:212
-#: app/Elements/SingleCategory/SingleCategory copy.php:85
 #: app/Elements/SingleCategory/SingleCategory.php:212
 #: app/Elements/SingleLocation/SingleLocation.php:212
 #: app/Elements/SingleTag/SingleTag.php:212
@@ -1073,7 +1034,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:223
 #: app/Elements/SearchResult/SearchResult.php:218
-#: app/Elements/SingleCategory/SingleCategory copy.php:91
 #: app/Elements/SingleCategory/SingleCategory.php:218
 #: app/Elements/SingleLocation/SingleLocation.php:218
 #: app/Elements/SingleTag/SingleTag.php:218
@@ -1098,7 +1058,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:260
 #: app/Elements/SearchResult/SearchResult.php:255
-#: app/Elements/SingleCategory/SingleCategory copy.php:125
 #: app/Elements/SingleCategory/SingleCategory.php:255
 #: app/Elements/SingleLocation/SingleLocation.php:255
 #: app/Elements/SingleTag/SingleTag.php:255
@@ -1107,7 +1066,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:261
 #: app/Elements/SearchResult/SearchResult.php:256
-#: app/Elements/SingleCategory/SingleCategory copy.php:126
 #: app/Elements/SingleCategory/SingleCategory.php:256
 #: app/Elements/SingleLocation/SingleLocation.php:256
 #: app/Elements/SingleTag/SingleTag.php:256
@@ -1116,7 +1074,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:262
 #: app/Elements/SearchResult/SearchResult.php:257
-#: app/Elements/SingleCategory/SingleCategory copy.php:127
 #: app/Elements/SingleCategory/SingleCategory.php:257
 #: app/Elements/SingleListingFields/Map/Map.php:66
 #: app/Elements/SingleLocation/SingleLocation.php:257
@@ -1126,7 +1083,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:271
 #: app/Elements/SearchResult/SearchResult.php:266
-#: app/Elements/SingleCategory/SingleCategory copy.php:137
 #: app/Elements/SingleCategory/SingleCategory.php:266
 #: app/Elements/SingleLocation/SingleLocation.php:266
 #: app/Elements/SingleTag/SingleTag.php:266
@@ -1196,7 +1152,6 @@ msgstr ""
 #: app/Elements/SearchListing/SearchListing.php:85
 #: app/Elements/SearchListing/SearchListing.php:373
 #: app/Elements/SearchResult/SearchResult.php:351
-#: app/Elements/SingleCategory/SingleCategory copy.php:348
 #: app/Elements/SingleCategory/SingleCategory.php:321
 #: app/Elements/SingleListingFields/ContactListingsOwnerForm/ContactListingsOwnerForm.php:99
 #: app/Elements/SingleLocation/SingleLocation.php:321
@@ -1206,7 +1161,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:327
 #: app/Elements/SearchResult/SearchResult.php:352
-#: app/Elements/SingleCategory/SingleCategory copy.php:349
 #: app/Elements/SingleCategory/SingleCategory.php:322
 #: app/Elements/SingleLocation/SingleLocation.php:322
 #: app/Elements/SingleTag/SingleTag.php:322
@@ -1215,7 +1169,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:328
 #: app/Elements/SearchResult/SearchResult.php:353
-#: app/Elements/SingleCategory/SingleCategory copy.php:350
 #: app/Elements/SingleCategory/SingleCategory.php:323
 #: app/Elements/SingleLocation/SingleLocation.php:323
 #: app/Elements/SingleTag/SingleTag.php:323
@@ -1231,7 +1184,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:385
 #: app/Elements/SearchResult/SearchResult.php:328
-#: app/Elements/SingleCategory/SingleCategory copy.php:287
 #: app/Elements/SingleCategory/SingleCategory.php:380
 #: app/Elements/SingleLocation/SingleLocation.php:380
 #: app/Elements/SingleTag/SingleTag.php:380
@@ -1239,9 +1191,8 @@ msgid "Specify Tags"
 msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:396
-#: app/Elements/AllLocations/AllLocations.php:141
+#: app/Elements/AllLocations/AllLocations.php:140
 #: app/Elements/SearchResult/SearchResult.php:338
-#: app/Elements/SingleCategory/SingleCategory copy.php:298
 #: app/Elements/SingleCategory/SingleCategory.php:391
 #: app/Elements/SingleLocation/SingleLocation.php:391
 #: app/Elements/SingleTag/SingleTag.php:391
@@ -1278,8 +1229,6 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:453
 #: app/Elements/SearchResult/SearchResult.php:420
-#: app/Elements/SingleCategory/SingleCategory copy.php:217
-#: app/Elements/SingleCategory/SingleCategory copy.php:386
 #: app/Elements/SingleCategory/SingleCategory.php:447
 #: app/Elements/SingleListingFields/Action/Action.php:78
 #: app/Elements/SingleListingFields/EditAction/EditAction.php:93
@@ -1292,7 +1241,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:507
 #: app/Elements/SearchResult/SearchResult.php:474
-#: app/Elements/SingleCategory/SingleCategory.php:501
+#: app/Elements/SingleCategory/SingleCategory.php:500
 #: app/Elements/SingleLocation/SingleLocation.php:501
 #: app/Elements/SingleTag/SingleTag.php:501
 msgid "Search Form: Container"
@@ -1300,7 +1249,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:510
 #: app/Elements/SearchResult/SearchResult.php:477
-#: app/Elements/SingleCategory/SingleCategory.php:504
+#: app/Elements/SingleCategory/SingleCategory.php:503
 #: app/Elements/SingleLocation/SingleLocation.php:504
 #: app/Elements/SingleTag/SingleTag.php:504
 msgid "Search Form: Field Settings"
@@ -1308,7 +1257,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:519
 #: app/Elements/SearchResult/SearchResult.php:486
-#: app/Elements/SingleCategory/SingleCategory.php:513
+#: app/Elements/SingleCategory/SingleCategory.php:512
 #: app/Elements/SingleLocation/SingleLocation.php:513
 #: app/Elements/SingleTag/SingleTag.php:513
 msgid "Listing Found Text"
@@ -1316,8 +1265,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:524
 #: app/Elements/SearchResult/SearchResult.php:491
-#: app/Elements/SingleCategory/SingleCategory copy.php:435
-#: app/Elements/SingleCategory/SingleCategory.php:518
+#: app/Elements/SingleCategory/SingleCategory.php:517
 #: app/Elements/SingleLocation/SingleLocation.php:518
 #: app/Elements/SingleTag/SingleTag.php:518
 #: app/Elements/UserDashboard/UserDashboard.php:74
@@ -1326,7 +1274,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:526
 #: app/Elements/SearchResult/SearchResult.php:493
-#: app/Elements/SingleCategory/SingleCategory.php:520
+#: app/Elements/SingleCategory/SingleCategory.php:519
 #: app/Elements/SingleLocation/SingleLocation.php:520
 #: app/Elements/SingleTag/SingleTag.php:520
 msgid "Sidebar: Title Settings"
@@ -1334,7 +1282,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:528
 #: app/Elements/SearchResult/SearchResult.php:495
-#: app/Elements/SingleCategory/SingleCategory.php:522
+#: app/Elements/SingleCategory/SingleCategory.php:521
 #: app/Elements/SingleLocation/SingleLocation.php:522
 #: app/Elements/SingleTag/SingleTag.php:522
 msgid "Sidebar: Field Settings"
@@ -1342,7 +1290,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:533
 #: app/Elements/SearchResult/SearchResult.php:500
-#: app/Elements/SingleCategory/SingleCategory.php:527
+#: app/Elements/SingleCategory/SingleCategory.php:526
 #: app/Elements/SingleLocation/SingleLocation.php:527
 #: app/Elements/SingleTag/SingleTag.php:527
 msgid "Listing: Card Container"
@@ -1350,7 +1298,7 @@ msgstr ""
 
 #: app/Elements/AllListings/AllListings.php:545
 #: app/Elements/SearchResult/SearchResult.php:512
-#: app/Elements/SingleCategory/SingleCategory.php:539
+#: app/Elements/SingleCategory/SingleCategory.php:538
 #: app/Elements/SingleLocation/SingleLocation.php:539
 #: app/Elements/SingleTag/SingleTag.php:539
 msgid "Pagination: Container"
@@ -1396,23 +1344,23 @@ msgstr ""
 msgid "Locations Per Row"
 msgstr ""
 
-#: app/Elements/AllLocations/AllLocations.php:153
+#: app/Elements/AllLocations/AllLocations.php:152
 msgid "Locations Order"
 msgstr ""
 
-#: app/Elements/AllLocations/AllLocations.php:167
+#: app/Elements/AllLocations/AllLocations.php:166
 msgid "Number of Locations to Show"
 msgstr ""
 
-#: app/Elements/AllLocations/AllLocations.php:174
+#: app/Elements/AllLocations/AllLocations.php:173
 msgid "Set -1 to display all locations"
 msgstr ""
 
-#: app/Elements/AllLocations/AllLocations.php:213
+#: app/Elements/AllLocations/AllLocations.php:212
 msgid "Location Text"
 msgstr ""
 
-#: app/Elements/AllLocations/AllLocations.php:219
+#: app/Elements/AllLocations/AllLocations.php:218
 msgid "Listings Count Text"
 msgstr ""
 
@@ -1458,7 +1406,6 @@ msgid "Listings: Filter"
 msgstr ""
 
 #: app/Elements/AuthorProfile/AuthorProfile.php:114
-#: app/Elements/SingleCategory/SingleCategory copy.php:450
 msgid "Pagination Container"
 msgstr ""
 
@@ -1773,85 +1720,11 @@ msgid "Search Result"
 msgstr ""
 
 #: app/Elements/SearchResult/SearchResult.php:362
-#: app/Elements/SingleCategory/SingleCategory copy.php:360
 msgid "Listings Order"
 msgstr ""
 
-#: app/Elements/SingleCategory/SingleCategory copy.php:40
 #: app/Elements/SingleCategory/SingleCategory.php:40
 msgid "Single Category"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:73
-msgid "Header?"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:100
-msgid "Filter Button?"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:112
-msgid "Listings Found Title"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:149
-msgid "Listings Per Row"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:168
-msgid "Number of Listings to Show"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:181
-msgid "Preview Image?"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:244
-msgid "Display"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:309
-msgid "Featured Only?"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:321
-msgid "Popular Only?"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:374
-msgid "Pagination?"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:421
-msgid "Top Search: Container"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:423
-msgid "Top Search: Fields"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:425
-msgid "Top Search: Button"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:430
-msgid "Listing Header: Items Found"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:437
-msgid "Sidebar: Title"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:439
-msgid "Sidebar: Fields"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:441
-msgid "Sidebar: Apply Button"
-msgstr ""
-
-#: app/Elements/SingleCategory/SingleCategory copy.php:443
-msgid "Sidebar: Reset Button"
 msgstr ""
 
 #: app/Elements/SingleListingFields/Action/Action.php:28
@@ -2455,6 +2328,10 @@ msgstr ""
 
 #: app/Elements/UserLogin/UserLogin.php:379
 msgid "Button"
+msgstr ""
+
+#: app/Utils/DirectoristTaxonomies.php:42
+msgid "All"
 msgstr ""
 
 #: app/Utils/Helper.php:44
